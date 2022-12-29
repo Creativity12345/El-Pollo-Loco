@@ -6,12 +6,7 @@ class World{
         new Chicken(),
     ];
 
-
-
-
-
-
-
+    
     draw(){
 
     }
