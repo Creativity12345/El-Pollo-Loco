@@ -3,7 +3,13 @@ class MovableObject {
     y;
     img;
 
+    
     moveRight() {
         console.log('Moving Right');
+    }
+
+
+    moveLeft(){
+        
     }
 }
