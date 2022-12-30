@@ -27,18 +27,20 @@ class World{
 
         this.addToMap(this.character);
 
-        this.enemies.forEach(enemy => {
-            this.addToMap(enemy);
-        });
-
-        this.clouds.forEach(cloud => {
-            this.addToMap(cloud);
-        });
+        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.backgroundObjects);
 
         //draw() wird immer wieder aufgerufen 
         let self = this;
         requestAnimationFrame(function(){
             self.draw();
+        });
+    }
+
+    addObjectsToMap(objects){
+        objects.forEach(o => {
+            this.addToMap(o);
         });
     }
 
