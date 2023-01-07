@@ -11,6 +11,7 @@ body {
     background-image: url(img/background.png);
     background-position: center;
     font-family: 'zabars', Arial, Helvetica, sans-serif;
+    margin: 0;
 }
 
 h1 {
@@ -20,5 +21,22 @@ h1 {
 }
 
 canvas {
-    background-color: black;
+    display: block;
+}
+
+/* Smartphones */
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+/* Smartphones */
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
+    .title{
+        display: none;
+    }
 }
