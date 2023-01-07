@@ -27,7 +27,7 @@ class World {
                     console.log('Crash');
                 } 
             });
-        }, 1000);
+        }, 200);
     }
 
     draw() {
