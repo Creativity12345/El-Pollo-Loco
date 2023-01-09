@@ -3,6 +3,11 @@ let world;
 let keyboard = new Keyboard();
 
 
+// function startScreen(){
+//     document.getElementById('canvas').innerHTML = '<img src="img/9_intro_outro_screens/start/startscreen_1.png" style="width: 100%; height: 100%;">';
+// }
+
+
 function init(){
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
