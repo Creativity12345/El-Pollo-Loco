@@ -14,31 +14,24 @@ class StatusBarBottles extends DrawableObject {
         super();
         this.loadImages(this.BOTTLE_IMAGES);
         this.x = 40;
-        this.y = 0;
+        this.y = 100;
         this.width = 200;
         this.height = 70;
-        this.setPercentage(100);
+        this.setPercentage(0);
     }
 
     setPercentage(percentage) {
         this.percentage = percentage; // => Bild 0 bis Bild 5
-        let path = this.BOTTLE_IMAGES[this.resolveImageIndex()];
+        let path = this.BOTTLE_IMAGES[this.getImageIndex()];
         this.img = this.imageCache[path];
     }
 
-    resolveImageIndex() {
-        if (this.percentage == 100) {
-            return 5;
-        } else if (this.percentage > 80) {
-            return 4;
-        } else if (this.percentage > 60) {
-            return 3;
-        } else if (this.percentage > 40) {
-            return 2;
-        } else if (this.percentage > 20) {
-            return 1;
-        } else {
-            return 0;
-        }
+    getImageIndex() {
+        if (this.percentage >= 5) return 5;
+        else if (this.percentage == 4) return 4;
+        else if (this.percentage == 3) return 3;
+        else if (this.percentage == 2) return 2;
+        else if (this.percentage == 1) return 1;
+        else return 0;
+      }
     }
-}
