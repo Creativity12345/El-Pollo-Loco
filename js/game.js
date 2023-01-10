@@ -84,7 +84,7 @@ function enterFullscreen() {
 }
 
 
-function exitFullscreen() {
+function toSmall() {
     document.getElementById('enterFullscreenBtn').classList.remove('d-none');
     document.getElementById('exitFullscreenBtn').classList.add('d-none');
     document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
