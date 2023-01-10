@@ -9,6 +9,7 @@ let keyboard = new Keyboard();
 
 
 function init() {
+    document.getElementById('startScreenContainer').classList.add('d-none');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 }
