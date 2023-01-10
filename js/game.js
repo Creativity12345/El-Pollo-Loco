@@ -74,7 +74,7 @@ function enterFullscreen() {
     document.getElementById('title').classList.add("d-none");
     document.getElementById('instruction').classList.add("d-none");
 
-    let element = document.getElementById('fullscreen');
+    let element = document.getElementById('content');
 
     if (element.requestFullscreen) {
         element.requestFullscreen();
