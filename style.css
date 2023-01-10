@@ -64,13 +64,13 @@ body {
     cursor: pointer;
 }
 
-.enterFullscreenBtn {
+.fullscreenBtn {
     position: absolute;
     right: 20px;
     bottom: 20px;
 }
 
-.enterFullscreenBtn:hover{
+.fullscreenBtn:hover{
     scale: 1.2;
     cursor: pointer;
 }
