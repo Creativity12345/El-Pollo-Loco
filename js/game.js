@@ -70,6 +70,8 @@ window.addEventListener("keyup", (e) => {
 
 
 function enterFullscreen() {
+    document.getElementById('startScreenImg').style.width = "100%";
+    document.getElementById('startScreenImg').style.height = "100vh";
     document.getElementById('canvas').style.width = "100%";
     document.getElementById('canvas').style.height = "100vh";
     document.getElementById('title').classList.add("d-none");

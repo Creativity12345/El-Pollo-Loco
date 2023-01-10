@@ -41,8 +41,8 @@ body {
 
 #playBtn {
     position: absolute;
-    top: 430px;
-    right: 300px;
+    bottom: 20px;
+    right: 44%;
     width: 40px;
     display: flex;
     justify-content: center;
@@ -55,6 +55,17 @@ body {
 }
 
 #playBtn:hover {
+    scale: 1.2;
+    cursor: pointer;
+}
+
+#fullscreenBtn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+#fullscreenBtn:hover{
     scale: 1.2;
     cursor: pointer;
 }
