@@ -3,11 +3,6 @@ let world;
 let keyboard = new Keyboard();
 
 
-// function startScreen(){
-//     document.getElementById('test').innerHTML = '<img src="img/9_intro_outro_screens/start/startscreen_1.png" style="width: 100%; height: 100%;">';
-// }
-
-
 function init() {
     document.getElementById('startScreenContainer').classList.add('d-none');
     canvas = document.getElementById('canvas');
@@ -70,12 +65,12 @@ window.addEventListener("keyup", (e) => {
 
 
 function enterFullscreen() {
-    document.getElementById('startScreenImg').style.width = "100%";
-    document.getElementById('startScreenImg').style.height = "100vh";
-    document.getElementById('canvas').style.width = "100%";
-    document.getElementById('canvas').style.height = "100vh";
-    document.getElementById('title').classList.add("d-none");
-    document.getElementById('instruction').classList.add("d-none");
+    document.getElementById('enterFullscreenBtn').classList.add('d-none');
+    document.getElementById('exitFullscreenBtn').classList.remove('d-none');
+    document.getElementById('startScreenImg').classList.add('startScreenImgFullscreen');
+    document.getElementById('canvas').classList.add('canvasFullScreen');
+    document.getElementById('title').classList.add('d-none');
+    document.getElementById('instruction').classList.add('d-none');
 
     let element = document.getElementById('content');
 
@@ -90,10 +85,13 @@ function enterFullscreen() {
 
 
 function exitFullscreen() {
-    document.getElementById('canvas').style.width = "720px";
-    document.getElementById('canvas').style.height = "480px";
-    document.getElementById('title').classList.remove("d-none");
-    document.getElementById('instruction').classList.remove("d-none");
+    debugger;
+    document.getElementById('enterFullscreenBtn').classList.remove('d-none');
+    document.getElementById('exitFullscreenBtn').classList.add('d-none');
+    document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
+    document.getElementById('canvas').classList.remove('canvasFullScreen');
+    document.getElementById('title').classList.remove('d-none');
+    document.getElementById('instruction').classList.remove('d-none');
 
     if (document.exitFullscreen) {
         document.exitFullscreen();
