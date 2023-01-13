@@ -1,5 +1,5 @@
 class CollectableObject extends MovableObject {
-    images_coins = ["img/8_coin/coin_1.png", "img/8_coin/coin_2.png"];
+    images_coins = ['img/8_coin/coin_1.png', 'img/8_coin/coin_2.png'];
     height = 120;
     width = 120;
     offset = {
@@ -12,7 +12,7 @@ class CollectableObject extends MovableObject {
   
     constructor(x) {
       super();
-      this.loadImage("img/8_coin/coin_1.png");
+      this.loadImage('img/8_coin/coin_1.png');
       this.loadImages(this.images_coins);
       this.animate();
       this.x = x;
