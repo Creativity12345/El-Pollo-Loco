@@ -71,7 +71,7 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0);
 
-        //draw() wird immer wieder aufgerufen 
+        // draw() wird immer wieder aufgerufen 
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
@@ -88,7 +88,6 @@ class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
 
