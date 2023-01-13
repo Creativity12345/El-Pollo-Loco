@@ -9,7 +9,10 @@ class World {
     statusBarBottle = new StatusBarBottles();
     statusBarCoins = new StatusBarCoins();
     statusBarEndboss = new StatusBarEndboss();
-    throwableObjects = [new ThrowableObject()];
+    throwableObjects = [];
+    doAnimation = true;
+    clearIntervals;
+    collectedCoinsStorage = [];
 
 
     constructor(canvas, keyboard) {
@@ -26,17 +29,18 @@ class World {
     }
 
     run(){
-        setInterval(() => {
-            this.checkCollisions();
-            this.checkThrowObjects();
-        }, 200);
+        this.checkCollisions();
+        this.checkThrowObjects();
+        requestAnimationFrame(() => {
+            this.run();
+        });
     }
 
     checkCollisions(){
         this.level.enemies.forEach((enemy) =>{
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
-                this.statusBar.setPercentage(this.character.energy);
+                this.statusBarHealth.setPercentage(this.character.energy);
             } 
         });
     }
