@@ -9,12 +9,10 @@ class Chicken extends MovableObject {
       "img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
     ];
     image_dead = ["img/3_enemies_chicken/chicken_normal/2_dead/dead.png"];
-    offset = {
-      top: 10,
-      left: 0,
-      right: 0,
-      bottom: 10,
-    };
+    offsetLeft = 0;
+    offsetRight = 50;
+    offsetTop = 0;
+    offsetBottom = 0;
     hitted = false;
     audio_hitted = new Audio("audio/chickenHitted.mp3");
   
