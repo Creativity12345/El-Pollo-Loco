@@ -4,9 +4,9 @@ class smallChicken extends MovableObject {
     y = 375;
     x = 400 + Math.random() * 3000;
     images_walking = [
-      "./img/3_enemies_chicken/chicken_small/1_walk/1_w.png",
-      "./img/3_enemies_chicken/chicken_small/1_walk/2_w.png",
-      "./img/3_enemies_chicken/chicken_small/1_walk/3_w.png",
+      './img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
+      './img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
+      './img/3_enemies_chicken/chicken_small/1_walk/3_w.png',
     ];
     offsetLeft = 25;
     offsetRight = 70;
@@ -14,7 +14,7 @@ class smallChicken extends MovableObject {
     offsetBottom = 168;
   
     constructor() {
-      super().loadImage("./img/3_enemies_chicken/chicken_small/1_walk/1_w.png");
+      super().loadImage('./img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
       this.loadImages(this.images_walking);
       this.animate();
       this.speed = 1 + Math.random() * 1.5;

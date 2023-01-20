@@ -35,8 +35,8 @@ class DrawableObject {
         this.canDrawFrame()
       ) {
         ctx.beginPath();
-        ctx.lineWidth = "3";
-        ctx.strokeStyle = "blue";
+        ctx.lineWidth = '3';
+        ctx.strokeStyle = 'blue';
         ctx.rect(this.x + this.offsetLeft, this.y + this.offsetTop, this.width - this.offsetRight, this.height - this.offsetBottom);
         ctx.stroke();
       }
