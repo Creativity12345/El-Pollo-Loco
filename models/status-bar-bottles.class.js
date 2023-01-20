@@ -1,12 +1,12 @@
 class StatusBarBottles extends DrawableObject {
     percentage = 100;
     BOTTLE_IMAGES = [
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png', //Bild 0
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png', //Bild 1
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png', //Bild 2
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/60.png', //Bild 3
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png', //Bild 4
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png', //Bild 5
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/0.png', //Bild 0
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/20.png', //Bild 1
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/40.png', //Bild 2
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/60.png', //Bild 3
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/80.png', //Bild 4
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png', //Bild 5
     ];
 
 
@@ -14,7 +14,7 @@ class StatusBarBottles extends DrawableObject {
         super();
         this.loadImages(this.BOTTLE_IMAGES);
         this.x = 40;
-        this.y = 100;
+        this.y = 120;
         this.width = 200;
         this.height = 70;
         this.setPercentage(0);
