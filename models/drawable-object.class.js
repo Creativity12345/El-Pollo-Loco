@@ -26,6 +26,10 @@ class DrawableObject {
         });
     }
 
+    draw(ctx) {
+      ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
     drawFrame(ctx) {
       if (
         this.canDrawFrame()
@@ -43,9 +47,5 @@ class DrawableObject {
       this instanceof Chicken ||
       this instanceof CollectableObject ||
       this instanceof Endboss
-    }
-
-    draw(ctx) {
-      ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }
