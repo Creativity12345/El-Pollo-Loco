@@ -36,7 +36,7 @@ class MovableObject extends DrawableObject {
     }
 
     hit() {
-        this.energy -= 5;
+        this.energy -= 1;
         if (this.energy <= 0) {
             this.energy = 0;
         } else {
@@ -78,30 +78,7 @@ class MovableObject extends DrawableObject {
 
 
 
-
-
-
-
-// class MovableObject extends DrawableObject {
-//     speed = 0.15;
-//     otherDirection = false;
-//     speedY = 0;
-//     acceleration = 2.5; // Beschleunigung
-//     energy = 100;
-//     lastHit = 0;
-//     offset = {
-//       top: 0,
-//       left: 0,
-//       right: 0,
-//       bottom: 0,
-//     };
   
-//     playAnimation(images) {
-//       let i = this.currentImg % images.length;
-//       let path = images[i];
-//       this.img = this.imageCache[path];
-//       this.currentImg++;
-//     }
   
 //     gameOver() {
 //       let endScreen = document.getElementById("endScreenContainer");
@@ -147,19 +124,6 @@ class MovableObject extends DrawableObject {
 //       return this.energy == 0;
 //     }
   
-//     isHurt() {
-//       let timepassed = new Date().getTime() - this.lastHit; // Differenz in ms
-//       timepassed = timepassed / 1000; // Differenz in sekunden
-//       return timepassed < 1;
-//     }
-  
-//     moveLeft() {
-//       this.x -= this.speed;
-//     }
-  
-//     moveRight() {
-//       this.x += this.speed;
-//     }
   
 //     applyGravity() {
 //       setStoppableInterval(() => {
@@ -170,12 +134,4 @@ class MovableObject extends DrawableObject {
 //       }, 1000 / 25);
 //     }
   
-//     isAboveGround() {
-//       if (this instanceof ThrowableObject) return true;
-//       else return this.y < 180;
-//     }
-  
-//     jump() {
-//       this.speedY = 30;
-//     }
 //   }

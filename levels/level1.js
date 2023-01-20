@@ -8,7 +8,7 @@ function initLevel1() {
         createBackgroundLayers(),
         createRotationImg(),
         createCoins(),
-        createBottles()
+        createBottles(),
     );
 }
 
