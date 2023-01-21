@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    endboss = new Endboss();
     level = level1;
     canvas;
     ctx;
@@ -15,10 +16,13 @@ class World {
     collectedCoinsStorage = [];
 
 
-    constructor(canvas, keyboard) {
+    constructor(canvas, keyboard, clearIntervals, gameOver) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.clearIntervals = clearIntervals;
+        this.gameOver = gameOver;
+
         this.draw();
         this.setWorld();
         this.run();
@@ -43,6 +47,29 @@ class World {
                 this.statusBarHealth.setPercentage(this.character.energy);
             } 
         });
+    }
+
+    checkCollectingBottles() {
+      this.level.bottles.forEach((bottle) => {
+        if (this.character.isCollidingCollectables(bottle)) {
+          if (!this.character.mute) this.character.audio_collectBottle.play();
+          this.character.collectedBottles++;
+          this.StatusBarBottle.setPercentage(this.character.collectedBottles);
+          this.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
+        }
+      });
+    }
+  
+    checkCollectingCoins() {
+      this.level.coins.forEach((coin) => {
+        if (this.character.isCollidingCollectables(coin)) {
+          if (!this.character.mute) this.character.audio_collectCoin.play();
+          this.character.collectedCoins++;
+          this.collectedCoinsStorage.push(coin);
+          this.StatusBarCoins.setPercentage(this.character.collectedCoins);
+          this.level.coins.splice(coin, 1);
+        }
+      });
     }
 
     checkThrowObjects(){
@@ -119,34 +146,8 @@ class World {
 
 
 // class World {
-//     character = new Character();
-//     endboss = new Endboss();
-//     level = level1;
-//     canvas;
-//     ctx;
-//     keyboard;
-//     camera_x = 0;
 //     levelSize = 100;
-//     StatusBarHealth = new StatusBarHealth();
-//     StatusBarBottle = new StatusBarBottle();
-//     StatusBarCoins = new StatusBarCoins();
-//     StatusBarEndboss = new StatusBarEndboss();
-//     throwableObjects = [];
-//     doAnimation = true;
-//     clearIntervals;
-//     collectedCoinsStorage = [];
   
-//     constructor(canvas, keyboard, clearIntervals, gameOver) {
-//       this.ctx = canvas.getContext("2d");
-//       this.canvas = canvas;
-//       this.keyboard = keyboard;
-//       this.clearIntervals = clearIntervals;
-//       this.gameOver = gameOver;
-  
-//       this.draw();
-//       this.setWorld();
-//       this.run();
-//     }
   
 //     run() {
 //       setStoppableInterval(() => {
@@ -264,28 +265,6 @@ class World {
 //       });
 //     }
   
-//     checkCollectingBottles() {
-//       this.level.bottles.forEach((bottle) => {
-//         if (this.character.isCollidingCollectables(bottle)) {
-//           if (!this.character.mute) this.character.audio_collectBottle.play();
-//           this.character.collectedBottles++;
-//           this.StatusBarBottle.setPercentage(this.character.collectedBottles);
-//           this.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
-//         }
-//       });
-//     }
-  
-//     checkCollectingCoins() {
-//       this.level.coins.forEach((coin) => {
-//         if (this.character.isCollidingCollectables(coin)) {
-//           if (!this.character.mute) this.character.audio_collectCoin.play();
-//           this.character.collectedCoins++;
-//           this.collectedCoinsStorage.push(coin);
-//           this.StatusBarCoins.setPercentage(this.character.collectedCoins);
-//           this.level.coins.splice(coin, 1);
-//         }
-//       });
-//     }
   
 //     checkCollisions() {
 //       this.level.enemies.forEach((enemy) => {
