@@ -46,6 +46,7 @@ class DrawableObject {
      return this instanceof Character ||
       this instanceof Chicken ||
       this instanceof CollectableObject ||
+      this instanceof CollectableBottle ||
       this instanceof Endboss
     }
 }
