@@ -37,7 +37,7 @@ class World {
         this.checkCollectingBottles();
         this.checkCollectingCoins();
         this.checkBonusHP(); // collect yellow chicken
-        this.checkThrowObjects();
+        this.checkThrow();
         requestAnimationFrame(() => {
             this.run();
         });
@@ -92,11 +92,16 @@ class World {
       });
     }
 
-    checkThrowObjects(){
-        if (this.keyboard.D) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-            this.throwableObjects.push(bottle);
-        }
+    checkThrow() {
+      if (this.keyboard.D && this.character.collectedBottles > 0) {
+        let bottle = new ThrowableObject(
+          this.character.x + 100,
+          this.character.y + 100
+        );
+        this.throwableObjects.push(bottle);
+        this.character.collectedBottles--;
+        this.statusBarBottle.setPercentage(this.character.collectedBottles);
+      }
     }
 
     draw() {
@@ -285,18 +290,6 @@ class World {
 //           this.StatusBarHealth.setPercentage(this.character.energy);
 //         }
 //       });
-//     }
-  
-//     checkThrow() {
-//       if (this.keyboard.d && this.character.collectedBottles > 0) {
-//         let bottle = new ThrowableObject(
-//           this.character.x + 100,
-//           this.character.y + 100
-//         );
-//         this.throwableObjects.push(bottle);
-//         this.character.collectedBottles--;
-//         this.StatusBarBottle.setPercentage(this.character.collectedBottles);
-//       }
 //     }
   
   
