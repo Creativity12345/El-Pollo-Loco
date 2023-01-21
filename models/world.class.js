@@ -240,19 +240,6 @@ class World {
 //       }
 //     }
   
-//     checkBonusHP() {
-//       for (let i = 0; i < this.level.smallChicken.length; i++) {
-//         const chicken = this.level.smallChicken[i];
-//         if (this.character.isCollidingChicken(chicken)) {
-//           let collectedChicken = this.level.smallChicken.indexOf(chicken);
-//           if (!this.character.mute) this.character.audio_bonusHP.play();
-//           this.level.smallChicken.splice(collectedChicken, 1);
-//           if (this.character.energy <= 100) this.character.energy += 20;
-//           if (this.character.energy > 100) this.character.energy = 100;
-//           this.StatusBarHealth.setPercentage(this.character.energy);
-//         }
-//       }
-//     }
   
 //     checkOnTopOfEnemy() {
 //       for (let i = 0; i < this.level.enemies.length; i++) {

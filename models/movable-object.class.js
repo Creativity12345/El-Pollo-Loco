@@ -106,15 +106,7 @@ class MovableObject extends DrawableObject {
 //         mo.x + mo.width
 //       );
 //     }
-  
-//     isCollidingChicken(mo) {
-//       return (
-//         this.x + this.width - this.offset.left > mo.x &&
-//         this.y + this.height > mo.y &&
-//         this.x < mo.x - this.offset.left + mo.width &&
-//         this.y < mo.y + mo.height
-//       );
-//     }
+
   
 //     hit() {
 //       this.energy -= 20;
