@@ -93,7 +93,9 @@ class World {
         this.addToMap(this.statusBarHealth);
         this.addToMap(this.statusBarBottle);
         this.addToMap(this.statusBarCoins);
-        this.addToMap(this.statusBarEndboss);
+        if (this.character.x > 2000) {
+            this.addToMap(this.statusBarEndboss);
+        }
         this.ctx.translate(this.camera_x, 0); // Forward
 
         this.addToMap(this.character);
@@ -309,17 +311,6 @@ class World {
 //         requestAnimationFrame(function () {
 //           self.draw();
 //         });
-//       }
-//     }
-  
-  
-//     addToMap(mo) {
-//       if (mo.otherDirection) {
-//         this.flipImage(mo);
-//       }
-//       mo.draw(this.ctx);
-//       if (mo.otherDirection) {
-//         this.flipImageBack(mo);
 //       }
 //     }
   
