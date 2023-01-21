@@ -62,7 +62,7 @@ class World {
           this.level.smallChicken.splice(collectedChicken, 1);
           if (this.character.energy <= 100) this.character.energy += 20;
           if (this.character.energy > 100) this.character.energy = 100;
-        //   this.StatusBarHealth.setPercentage(this.character.energy);
+          this.statusBarHealth.setPercentage(this.character.energy);
         }
       }
     }
@@ -73,7 +73,7 @@ class World {
             console.log('addBottle');
         //   if (!this.character.mute) this.character.audio_collectBottle.play();
           this.character.collectedBottles++;
-        //   this.StatusBarBottle.setPercentage(this.character.collectedBottles);
+          this.statusBarBottle.setPercentage(this.character.collectedBottles);
           this.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
         }
       });
@@ -86,7 +86,7 @@ class World {
         //   if (!this.character.mute) this.character.audio_collectCoin.play();
           this.character.collectedCoins++;
           this.collectedCoinsStorage.push(coin);
-        //   this.StatusBarCoins.setPercentage(this.character.collectedCoins);
+          this.statusBarCoins.setPercentage(this.character.collectedCoins);
           this.level.coins.splice(coin, 1);
         }
       });

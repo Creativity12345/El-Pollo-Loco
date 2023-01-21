@@ -1,5 +1,8 @@
 class Character extends MovableObject {
     world;
+    collectedCoins = 0;
+    collectedBottles = 0;
+    boostHP = false;
     walking_sound = new Audio('audio/running.m4a');
     y = 230;
     height = 200;
@@ -95,19 +98,6 @@ class Character extends MovableObject {
 
 
 // class Character extends MovableObject {
-//     height = 250;
-//     width = 100;
-//     y = 20;
-//     speed = 4;
-//     collectedCoins = 0;
-//     collectedBottles = 0;
-//     offset = {
-//       top: 120,
-//       left: 20,
-//       right: 20,
-//       bottom: 30,
-//     };
-//     boostHP = false;
 //     doAnimation = true;
 //     lastInteraction = 0;
 //     idle = false;
@@ -181,7 +171,6 @@ class Character extends MovableObject {
 //     audio_bonusHP = new Audio("audio/chickenHitted.mp3");
 //     audio_hurt = new Audio("audio/hurt.mp3");
 //     audio_background = new Audio("audio/background-music.mp3");
-//     world;
   
 //     constructor() {
 //       super().loadImage("img/2_character_pepe/2_walk/W-21.png");
