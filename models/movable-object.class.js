@@ -106,29 +106,3 @@ class MovableObject extends DrawableObject {
 //         mo.x + mo.width
 //       );
 //     }
-
-  
-//     hit() {
-//       this.energy -= 20;
-//       if (this.energy < 0) {
-//         this.energy = 0;
-//       } else {
-//         this.lastHit = new Date().getTime();
-//       }
-//     }
-  
-//     isDead() {
-//       return this.energy == 0;
-//     }
-  
-  
-//     applyGravity() {
-//       setStoppableInterval(() => {
-//         if (this.isAboveGround() || this.speedY > 0) {
-//           this.y -= this.speedY;
-//           this.speedY -= this.acceleration;
-//         }
-//       }, 1000 / 25);
-//     }
-  
-//   }
