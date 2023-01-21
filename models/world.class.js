@@ -32,17 +32,6 @@ class World {
         this.character.world = this;
     }
 
-    // run(){
-    //     this.checkCollisions();
-    //     this.checkCollectingBottles();
-    //     this.checkCollectingCoins();
-    //     this.checkBonusHP(); // collect yellow chicken
-    //     this.checkThrow();
-    //     requestAnimationFrame(() => {
-    //         this.run();
-    //     });
-    // }
-
     run() {
         setStoppableInterval(() => {
           this.checkThrow();
@@ -64,7 +53,7 @@ class World {
         //   this.character.checkIdleMode();
         //   this.stopGame();
         }, 50);
-      }
+    }
 
     checkCollisions(){
         this.level.enemies.forEach((enemy) => {
