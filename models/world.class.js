@@ -32,16 +32,39 @@ class World {
         this.character.world = this;
     }
 
-    run(){
-        this.checkCollisions();
-        this.checkCollectingBottles();
-        this.checkCollectingCoins();
-        this.checkBonusHP(); // collect yellow chicken
-        this.checkThrow();
-        requestAnimationFrame(() => {
-            this.run();
-        });
-    }
+    // run(){
+    //     this.checkCollisions();
+    //     this.checkCollectingBottles();
+    //     this.checkCollectingCoins();
+    //     this.checkBonusHP(); // collect yellow chicken
+    //     this.checkThrow();
+    //     requestAnimationFrame(() => {
+    //         this.run();
+    //     });
+    // }
+
+    run() {
+        setStoppableInterval(() => {
+          this.checkThrow();
+        }, 250);
+        setStoppableInterval(() => {
+        //   this.endboss.checkCondition();
+        }, 150);
+        setStoppableInterval(() => {
+        //   this.checkEndbossKilled();
+        }, 600);
+        setStoppableInterval(() => {
+          this.checkCollisions();
+          this.checkCollectingCoins();
+          this.checkCollectingBottles();
+          this.checkOnTopOfEnemy();
+          this.checkBonusHP(); // collect yellow chicken
+        //   this.checkUnstoppable();
+        //   this.checkBackgroundMusic();
+        //   this.character.checkIdleMode();
+        //   this.stopGame();
+        }, 50);
+      }
 
     checkCollisions(){
         this.level.enemies.forEach((enemy) => {
@@ -87,6 +110,21 @@ class World {
           this.level.coins.splice(coin, 1);
         }
       });
+    }
+
+    checkOnTopOfEnemy() {
+      for (let i = 0; i < this.level.enemies.length; i++) {
+        const enemy = this.level.enemies[i];
+        if (
+          this.character.isCollidingChicken(enemy) &&
+          this.character.isAboveGround()
+        ) {
+          let hittedChicken = this.level.enemies.indexOf(enemy);
+          if (!this.level.enemies[hittedChicken].hitted && !this.character.mute)
+            this.level.enemies[hittedChicken].audio_hitted.play();
+          this.level.enemies[hittedChicken].hitted = true;
+        }
+      }
     }
 
     checkThrow() {
@@ -173,29 +211,6 @@ class World {
 //     levelSize = 100;
   
   
-//     run() {
-//       setStoppableInterval(() => {
-//         this.checkThrow();
-//       }, 250);
-//       setStoppableInterval(() => {
-//         this.endboss.checkCondition();
-//       }, 150);
-//       setStoppableInterval(() => {
-//         this.checkEndbossKilled();
-//       }, 600);
-//       setStoppableInterval(() => {
-//         this.checkCollisions();
-//         this.checkCollectingCoins();
-//         this.checkCollectingBottles();
-//         this.checkOnTopOfEnemy();
-//         this.checkBonusHP(); // collect yellow chicken
-//         this.checkUnstoppable();
-//         this.checkBackgroundMusic();
-//         this.character.checkIdleMode();
-//         this.stopGame();
-//       }, 50);
-//     }
-  
 //     resetLvl() {
 //       this.resetChickens();
 //       this.resetEndboss();
@@ -242,21 +257,7 @@ class World {
 //       }
 //     }
   
-  
-//     checkOnTopOfEnemy() {
-//       for (let i = 0; i < this.level.enemies.length; i++) {
-//         const enemy = this.level.enemies[i];
-//         if (
-//           this.character.isCollidingChicken(enemy) &&
-//           this.character.isAboveGround()
-//         ) {
-//           let hittedChicken = this.level.enemies.indexOf(enemy);
-//           if (!this.level.enemies[hittedChicken].hitted && !this.character.mute)
-//             this.level.enemies[hittedChicken].audio_hitted.play();
-//           this.level.enemies[hittedChicken].hitted = true;
-//         }
-//       }
-//     }
+
   
 //     checkEndbossKilled() {
 //       this.throwableObjects.forEach((tO) => {

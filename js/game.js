@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let intervalIds = []; // hier drin werden alle intervalle gespeichert
 
 
 function init() {
@@ -8,6 +9,12 @@ function init() {
     document.getElementById('startScreenContainer').classList.add('d-none');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+}
+
+
+function setStoppableInterval(fn, time) {
+  let id = setInterval(fn, time);
+  intervalIds.push(id);
 }
 
 
@@ -106,7 +113,7 @@ function toSmall() {
 
 
 // let gameOver = false;
-// let intervalIds = []; // hier drin werden alle intervalle gespeichert
+
 // let stopGameVariable = function stopGame() {
 //   // in variable um es in die world.js im constructor zu übergeben
 //   intervalIds.forEach(clearInterval);
@@ -121,10 +128,7 @@ function toSmall() {
 //   }
 
 
-// function setStoppableInterval(fn, time) {
-//   let id = setInterval(fn, time);
-//   intervalIds.push(id);
-// }
+
 
 // function stopGame() {
 //   intervalIds.forEach(clearInterval);
