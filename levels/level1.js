@@ -93,7 +93,6 @@ function createCoins() {
 
 function createBottles() {
     return [
-        new CollectableBottle(250),
         new CollectableBottle(300),
         new CollectableBottle(650),
         new CollectableBottle(700),

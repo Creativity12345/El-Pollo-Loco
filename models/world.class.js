@@ -56,7 +56,6 @@ class World {
       for (let i = 0; i < this.level.smallChicken.length; i++) {
         const chicken = this.level.smallChicken[i];
         if (this.character.isCollidingChicken(chicken)) {
-            console.log('addHP');
           let collectedChicken = this.level.smallChicken.indexOf(chicken);
         //   if (!this.character.mute) this.character.audio_bonusHP.play();
           this.level.smallChicken.splice(collectedChicken, 1);
