@@ -70,7 +70,6 @@ class World {
     checkCollectingBottles() {
       this.level.bottles.forEach((bottle) => {
         if (this.character.isCollidingCollectables(bottle)) {
-            console.log('addBottle');
         //   if (!this.character.mute) this.character.audio_collectBottle.play();
           this.character.collectedBottles++;
           this.statusBarBottle.setPercentage(this.character.collectedBottles);
@@ -82,7 +81,6 @@ class World {
     checkCollectingCoins() {
       this.level.coins.forEach((coin) => {
         if (this.character.isCollidingCollectables(coin)) {
-            console.log('addCoin');
         //   if (!this.character.mute) this.character.audio_collectCoin.play();
           this.character.collectedCoins++;
           this.collectedCoinsStorage.push(coin);
