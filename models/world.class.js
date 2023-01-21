@@ -36,6 +36,7 @@ class World {
         this.checkCollisions();
         this.checkCollectingBottles();
         this.checkCollectingCoins();
+        this.checkBonusHP(); // collect yellow chicken
         this.checkThrowObjects();
         requestAnimationFrame(() => {
             this.run();
@@ -51,12 +52,28 @@ class World {
         });
     }
 
+    checkBonusHP() {
+      for (let i = 0; i < this.level.smallChicken.length; i++) {
+        const chicken = this.level.smallChicken[i];
+        if (this.character.isCollidingChicken(chicken)) {
+            console.log('addHP');
+          let collectedChicken = this.level.smallChicken.indexOf(chicken);
+        //   if (!this.character.mute) this.character.audio_bonusHP.play();
+          this.level.smallChicken.splice(collectedChicken, 1);
+          if (this.character.energy <= 100) this.character.energy += 20;
+          if (this.character.energy > 100) this.character.energy = 100;
+        //   this.StatusBarHealth.setPercentage(this.character.energy);
+        }
+      }
+    }
+
     checkCollectingBottles() {
       this.level.bottles.forEach((bottle) => {
         if (this.character.isCollidingCollectables(bottle)) {
-          if (!this.character.mute) this.character.audio_collectBottle.play();
+            console.log('addBottle');
+        //   if (!this.character.mute) this.character.audio_collectBottle.play();
           this.character.collectedBottles++;
-          this.StatusBarBottle.setPercentage(this.character.collectedBottles);
+        //   this.StatusBarBottle.setPercentage(this.character.collectedBottles);
           this.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
         }
       });
@@ -65,10 +82,11 @@ class World {
     checkCollectingCoins() {
       this.level.coins.forEach((coin) => {
         if (this.character.isCollidingCollectables(coin)) {
-          if (!this.character.mute) this.character.audio_collectCoin.play();
+            console.log('addCoin');
+        //   if (!this.character.mute) this.character.audio_collectCoin.play();
           this.character.collectedCoins++;
           this.collectedCoinsStorage.push(coin);
-          this.StatusBarCoins.setPercentage(this.character.collectedCoins);
+        //   this.StatusBarCoins.setPercentage(this.character.collectedCoins);
           this.level.coins.splice(coin, 1);
         }
       });
@@ -404,14 +422,6 @@ class World {
 //       this.addObjectsToMap(this.level.bottles);
 //     }
   
-//     addStatusbars() {
-//       this.addToMap(this.StatusBarHealth);
-//       this.addToMap(this.StatusBarBottle);
-//       this.addToMap(this.StatusBarCoins);
-//       if (this.character.x > 2950) {
-//         this.addToMap(this.StatusBarEndboss);
-//       }
-//     }
   
 //     characterCanCollide(enemy) {
 //       return (

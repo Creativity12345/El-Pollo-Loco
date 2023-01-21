@@ -14,7 +14,7 @@ class CollectableObject extends MovableObject {
       this.loadImages(this.images_coins);
       this.animate();
       this.x = x;
-      this.y = 170;
+      this.y = 200;
     }
   
     animate() {

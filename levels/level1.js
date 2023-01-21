@@ -33,6 +33,8 @@ function createSmallChicken() {
         new smallChicken(),
         new smallChicken(),
         new smallChicken(),
+        new smallChicken(),
+        new smallChicken(),
     ];
 }
 

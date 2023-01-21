@@ -35,6 +35,20 @@ class MovableObject extends DrawableObject {
             this.y + this.offsetTop < mo.y + mo.height - (mo.offsetBottom - mo.offsetTop);
     }
 
+    isCollidingChicken(mo) {
+        return this.x + this.width - (this.offsetRight - this.offsetLeft) > mo.x + mo.offsetLeft &&
+        this.y + this.height - (this.offsetBottom - this.offsetTop) > mo.y + mo.offsetTop &&
+        this.x + this.offsetLeft < mo.x + mo.width - (mo.offsetRight - mo.offsetLeft) &&
+        this.y + this.offsetTop < mo.y + mo.height - (mo.offsetBottom - mo.offsetTop);
+    }
+
+    isCollidingCollectables(mo) {
+        return this.x + this.width - (this.offsetRight - this.offsetLeft) > mo.x + mo.offsetLeft &&
+        this.y + this.height - (this.offsetBottom - this.offsetTop) > mo.y + mo.offsetTop &&
+        this.x + this.offsetLeft < mo.x + mo.width - (mo.offsetRight - mo.offsetLeft) &&
+        this.y + this.offsetTop < mo.y + mo.height - (mo.offsetBottom - mo.offsetTop);
+    }
+
     hit() {
         this.energy -= 1;
         if (this.energy <= 0) {
@@ -90,15 +104,6 @@ class MovableObject extends DrawableObject {
 //         this.y + this.height &&
 //         this.x + this.width >= mo.y + mo.height &&
 //         mo.x + mo.width
-//       );
-//     }
-  
-//     isCollidingCollectables(mo) {
-//       return (
-//         this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-//         this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-//         this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-//         this.y + this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
 //       );
 //     }
   
