@@ -89,11 +89,11 @@ function createCoins() {
 
 function createBottles() {
     return [
+        new CollectableBottle(250),
+        new CollectableBottle(300),
         new CollectableBottle(650),
         new CollectableBottle(700),
         new CollectableBottle(1500),
         new CollectableBottle(1550),
-        new CollectableBottle(2500),
-        new CollectableBottle(2550),
     ];
 }

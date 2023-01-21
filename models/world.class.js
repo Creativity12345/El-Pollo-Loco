@@ -70,6 +70,7 @@ class World {
         this.addToMap(this.character);
 
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.smallChicken);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.throwableObjects);
         this.addObjectsToMap(this.level.bottles);
