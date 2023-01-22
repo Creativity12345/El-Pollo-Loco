@@ -49,10 +49,21 @@ class World {
           this.checkOnTopOfEnemy();
           this.checkBonusHP(); // collect yellow chicken
         //   this.checkUnstoppable();
-        //   this.checkBackgroundMusic();
+          this.checkBackgroundMusic();
         //   this.character.checkIdleMode();
         //   this.stopGame();
         }, 50);
+    }
+
+    checkBackgroundMusic() {
+        if (this.bgMusicWanted()) {
+          this.character.audio_background.play();
+          this.character.audio_background.volume = 0.25;
+        } else this.character.audio_background.pause();
+    }
+
+    bgMusicWanted() {
+      return gameOver === false && !this.character.mute && !this.character.muteBg;
     }
 
     checkCollisions() {
@@ -251,13 +262,6 @@ class World {
 //       this.resetSmallChickens();
 //     }
   
-//     checkBackgroundMusic() {
-//       if (this.bgMusicWanted()) {
-//         this.character.audio_background.play();
-//         this.character.audio_background.volume = 0.25;
-//       } else this.character.audio_background.pause();
-//     }
-  
 //     stopGame() {
 //       if (this.character.energy == 0) {
 //         this.character.playAnimation(this.character.images_dying);
@@ -355,10 +359,6 @@ class World {
 //         new smallChicken(),
 //         new smallChicken()
 //       );
-//     }
-  
-//     bgMusicWanted() {
-//       return gameOver === false && !this.character.mute && !this.character.muteBg;
 //     }
   
 //     showEndscreen() {
