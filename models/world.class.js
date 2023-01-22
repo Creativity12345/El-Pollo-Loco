@@ -49,22 +49,22 @@ class World {
           this.checkOnTopOfEnemy();
           this.checkBonusHP(); // collect yellow chicken
         //   this.checkUnstoppable();
-          this.checkBackgroundMusic();
+          // this.checkBackgroundMusic();
         //   this.character.checkIdleMode();
         //   this.stopGame();
         }, 50);
     }
 
-    checkBackgroundMusic() {
-        if (this.bgMusicWanted()) {
-          this.character.audio_background.play();
-          this.character.audio_background.volume = 0.25;
-        } else this.character.audio_background.pause();
-    }
+    // checkBackgroundMusic() {
+    //     if (this.bgMusicWanted()) {
+    //       this.character.audio_background.play();
+    //       this.character.audio_background.volume = 0.25;
+    //     } else this.character.audio_background.pause();
+    // }
 
-    bgMusicWanted() {
-      return gameOver === false && !this.character.mute && !this.character.muteBg;
-    }
+    // bgMusicWanted() {
+    //   return gameOver === false && !this.character.mute && !this.character.muteBg;
+    // }
 
     checkCollisions() {
       this.level.enemies.forEach((enemy) => {
@@ -73,7 +73,7 @@ class World {
           let hurtsound = this.character.audio_hurt;
           hurtsound.playbackRate = 3;
           if (!this.character.mute) hurtsound.play();
-          this.StatusBarHealth.setPercentage(this.character.energy);
+          this.statusBarHealth.setPercentage(this.character.energy);
         }
       });
     }

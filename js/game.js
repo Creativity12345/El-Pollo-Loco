@@ -6,6 +6,7 @@ let intervalIds = []; // hier drin werden alle intervalle gespeichert
 
 function init() {
     initLevel1();
+    new Audio("audio/backgroundMusic.mp3");
     document.getElementById('startScreenContainer').classList.add('d-none');
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
