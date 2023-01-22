@@ -37,10 +37,10 @@ class World {
           this.checkThrow();
         }, 250);
         setStoppableInterval(() => {
-        //   this.endboss.checkCondition();
+          this.endboss.checkCondition();
         }, 150);
         setStoppableInterval(() => {
-        //   this.checkEndbossKilled();
+          this.checkEndbossKilled();
         }, 600);
         setStoppableInterval(() => {
           this.checkCollisions();
@@ -55,13 +55,32 @@ class World {
         }, 50);
     }
 
-    checkCollisions(){
-        this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                this.statusBarHealth.setPercentage(this.character.energy);
-            } 
-        });
+    checkCollisions() {
+      this.level.enemies.forEach((enemy) => {
+        if (this.characterCanCollide(enemy)) {
+          this.character.hit();
+          let hurtsound = this.character.audio_hurt;
+          hurtsound.playbackRate = 3;
+          if (!this.character.mute) hurtsound.play();
+          this.StatusBarHealth.setPercentage(this.character.energy);
+        }
+      });
+    }
+
+    characterCanCollide(enemy) {
+      return (
+        this.character.isCollidingChicken(enemy) &&
+        !enemy.hitted &&
+        this.characterCanBeHurt()
+      );
+    }
+
+    characterCanBeHurt() {
+      return (
+        !this.character.isAboveGround() &&
+        !this.character.isHurt() &&
+        !this.character.unstoppable
+      );
     }
 
     checkBonusHP() {
@@ -128,6 +147,24 @@ class World {
       }
     }
 
+    checkEndbossKilled() {
+      this.throwableObjects.forEach((tO) => {
+        if (this.endboss.isCollidingCollectables(tO)) {
+          let hittedsound = this.character.audio_smashingBottle;
+          hittedsound.playbackRate = 3;
+          if (!this.character.mute) hittedsound.play();
+          this.endboss.hitted();
+          this.StatusBarEndboss.setPercentage(this.endboss.energy);
+        } else if (this.endboss.isCollidingCollectables(this.character)) {
+          this.character.hit();
+          let hurtsound = this.character.audio_hurt;
+          hurtsound.playbackRate = 3;
+          if (!this.character.mute) hurtsound.play();
+          this.StatusBarHealth.setPercentage(this.character.energy);
+        }
+      });
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -192,6 +229,12 @@ class World {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
+
+    endbossAttacking() {
+      if (this.character.x >= 3000) {
+        this.endboss.attack();
+      }
+    }
 }
 
 
@@ -238,45 +281,6 @@ class World {
 //           this.stopUnstoppableMode();
 //         }, 3000);
 //       }
-//     }
-  
-//     endbossAttacking() {
-//       if (this.character.x >= 3000) {
-//         this.endboss.attack();
-//       }
-//     }
-  
-
-  
-//     checkEndbossKilled() {
-//       this.throwableObjects.forEach((tO) => {
-//         if (this.endboss.isCollidingCollectables(tO)) {
-//           let hittedsound = this.character.audio_smashingBottle;
-//           hittedsound.playbackRate = 3;
-//           if (!this.character.mute) hittedsound.play();
-//           this.endboss.hitted();
-//           this.StatusBarEndboss.setPercentage(this.endboss.energy);
-//         } else if (this.endboss.isCollidingCollectables(this.character)) {
-//           this.character.hit();
-//           let hurtsound = this.character.audio_hurt;
-//           hurtsound.playbackRate = 3;
-//           if (!this.character.mute) hurtsound.play();
-//           this.StatusBarHealth.setPercentage(this.character.energy);
-//         }
-//       });
-//     }
-  
-  
-//     checkCollisions() {
-//       this.level.enemies.forEach((enemy) => {
-//         if (this.characterCanCollide(enemy)) {
-//           this.character.hit();
-//           let hurtsound = this.character.audio_hurt;
-//           hurtsound.playbackRate = 3;
-//           if (!this.character.mute) hurtsound.play();
-//           this.StatusBarHealth.setPercentage(this.character.energy);
-//         }
-//       });
 //     }
   
   
@@ -371,14 +375,7 @@ class World {
 //       document.getElementById("unstoppable").classList.add("d-none");
 //       this.StatusBarCoins.setPercentage(this.character.collectedCoins);
 //     }
-  
-//     characterCanBeHurt() {
-//       return (
-//         !this.character.isAboveGround() &&
-//         !this.character.isHurt() &&
-//         !this.character.unstoppable
-//       );
-//     }
+
   
 //     addAllObjects() {
 //       this.addObjectsToMap(this.level.clouds);
@@ -388,13 +385,3 @@ class World {
 //       this.addObjectsToMap(this.level.coins);
 //       this.addObjectsToMap(this.level.bottles);
 //     }
-  
-  
-//     characterCanCollide(enemy) {
-//       return (
-//         this.character.isCollidingChicken(enemy) &&
-//         !enemy.hitted &&
-//         this.characterCanBeHurt()
-//       );
-//     }
-//   }

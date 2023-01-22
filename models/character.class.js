@@ -40,6 +40,15 @@ class Character extends MovableObject {
         'img/2_character_pepe/5_dead/D-56.png',
         'img/2_character_pepe/5_dead/D-57.png',
     ];
+    IMAGE_DEAD = ['img/2_character_pepe/5_dead/D-57.png'];
+
+    audio_collectCoin = new Audio("audio/coinCollect1.mp3");
+    audio_jump = new Audio("audio/jump.mp3");
+    audio_collectBottle = new Audio("audio/collectBottle.mp3");
+    audio_smashingBottle = new Audio("audio/bottleSmash.mp3");
+    audio_bonusHP = new Audio("audio/chickenHitted.mp3");
+    audio_hurt = new Audio("audio/hurt.mp3");
+    audio_background = new Audio("audio/backgroundMusic.mp3");
     offsetLeft = 20;
     offsetRight = 50;
     offsetTop = 90;
@@ -163,14 +172,6 @@ class Character extends MovableObject {
 //       "img/2_character_pepe/4_hurt/H-42.png",
 //       "img/2_character_pepe/4_hurt/H-43.png",
 //     ];
-//     image_dead = ["img/2_character_pepe/5_dead/D-57.png"];
-//     audio_collectCoin = new Audio("audio/coinCollect1.mp3");
-//     audio_jump = new Audio("audio/cartoon-jump-01.mp3");
-//     audio_collectBottle = new Audio("audio/collectBottle.mp3");
-//     audio_smashingBottle = new Audio("audio/bottleSmash.mp3");
-//     audio_bonusHP = new Audio("audio/chickenHitted.mp3");
-//     audio_hurt = new Audio("audio/hurt.mp3");
-//     audio_background = new Audio("audio/background-music.mp3");
   
 //     constructor() {
 //       super().loadImage("img/2_character_pepe/2_walk/W-21.png");
