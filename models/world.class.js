@@ -88,7 +88,7 @@ class World {
         const chicken = this.level.smallChicken[i];
         if (this.character.isCollidingChicken(chicken)) {
           let collectedChicken = this.level.smallChicken.indexOf(chicken);
-        //   if (!this.character.mute) this.character.audio_bonusHP.play();
+          if (!this.character.mute) this.character.audio_bonusHP.play();
           this.level.smallChicken.splice(collectedChicken, 1);
           if (this.character.energy <= 100) this.character.energy += 20;
           if (this.character.energy > 100) this.character.energy = 100;
@@ -100,7 +100,7 @@ class World {
     checkCollectingBottles() {
       this.level.bottles.forEach((bottle) => {
         if (this.character.isCollidingCollectables(bottle)) {
-        //   if (!this.character.mute) this.character.audio_collectBottle.play();
+          if (!this.character.mute) this.character.audio_collectBottle.play();
           this.character.collectedBottles++;
           this.statusBarBottle.setPercentage(this.character.collectedBottles);
           this.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
@@ -111,7 +111,7 @@ class World {
     checkCollectingCoins() {
       this.level.coins.forEach((coin) => {
         if (this.character.isCollidingCollectables(coin)) {
-        //   if (!this.character.mute) this.character.audio_collectCoin.play();
+          if (!this.character.mute) this.character.audio_collectCoin.play();
           this.character.collectedCoins++;
           this.collectedCoinsStorage.push(coin);
           this.statusBarCoins.setPercentage(this.character.collectedCoins);
