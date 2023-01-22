@@ -2,14 +2,25 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let intervalIds = []; // hier drin werden alle intervalle gespeichert
+let gameOver = false;
+let stopGameVariable = function stopGame() {
+  // in variable um es in die world.js im constructor zu übergeben
+  intervalIds.forEach(clearInterval);
+};
 
 
 function init() {
+    removeClasses();
     initLevel1();
-    new Audio("audio/backgroundMusic.mp3");
     document.getElementById('startScreenContainer').classList.add('d-none');
+    document.getElementById('endScreenContainer').classList.add('d-none');
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
+    world = new World(canvas, keyboard, stopGameVariable, gameOver);
+}
+
+
+function stopGame() {
+  intervalIds.forEach(clearInterval);
 }
 
 
@@ -109,31 +120,22 @@ function toSmall() {
 }
 
 
+function removeClasses() {
+    document.getElementById('startScreenContainer').classList.add('d-none');
+    document.getElementById('endScreenContainer').classList.add('d-none');
+}
 
 
 
 
-// let gameOver = false;
 
-// let stopGameVariable = function stopGame() {
-//   // in variable um es in die world.js im constructor zu übergeben
-//   intervalIds.forEach(clearInterval);
-// };
+
+
 
 // function init() {
 //     bindTouchBtns();
-//     initLevel();
-//     removeClasses();
-//     canvas = document.getElementById("canvas");
-//     world = new World(canvas, keyboard, stopGameVariable, gameOver);  
 //   }
 
-
-
-
-// function stopGame() {
-//   intervalIds.forEach(clearInterval);
-// }
 
 // function mute() {
 //   if (!world.character.mute) {
@@ -160,16 +162,6 @@ function toSmall() {
 
 // function closeControls() {
 //   document.getElementById("instructions").classList.add("d-none");
-// }
-
-// function removeClasses() {
-//   document.getElementById("startScreenContainer").style.display = "none";
-//   document.getElementById("endScreenContainer").style.display = "none";
-//   document.getElementById("fullscreenBtn").classList.remove("d-none")
-//   document.getElementById("btn-left").classList.remove("d-none")
-//   document.getElementById("btn-right").classList.remove("d-none")
-//   document.getElementById("btn-jump").classList.remove("d-none")
-//   document.getElementById("btn-throw").classList.remove("d-none")
 // }
 
 

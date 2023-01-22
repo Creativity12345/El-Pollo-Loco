@@ -98,6 +98,43 @@ canvas {
     height: 100vh !important;
 }
 
+#endScreenContainer {
+    position: absolute;
+    top: 0;
+}
+
+#endScreenImg {
+    width: 720px;
+    height: 480px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.802);
+}
+
+/* .endScreenImgFullscreen{
+    width: 100% !important;
+    height: 100vh !important;
+} */
+
+#restartBtn {
+    position: absolute;
+    bottom: 20px;
+    right: 44%;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    padding: 5px 20px;
+    box-shadow: 0px 0px 3px 3px black;
+    border-radius: 10px;
+    background-color: rgb(255, 196, 2);
+}
+
+#restartBtn:hover {
+    scale: 1.2;
+    cursor: pointer;
+}
+
 /* Smartphones */
 @media only screen and (max-width: 720px) {
     canvas {

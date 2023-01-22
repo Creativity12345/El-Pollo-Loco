@@ -86,6 +86,10 @@ class MovableObject extends DrawableObject {
     jump() {
         this.speedY = 20;
     }
+
+    gameOver() {
+        document.getElementById('endScreenContainer').classList.remove('d-none');
+    }
 }
 
 
@@ -93,11 +97,6 @@ class MovableObject extends DrawableObject {
 
 
   
-  
-//     gameOver() {
-//       let endScreen = document.getElementById("endScreenContainer");
-//       endScreen.style.display = "block";
-//     }
   
 //     isOnTop(mo) {
 //       return (

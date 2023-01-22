@@ -49,22 +49,22 @@ class World {
           this.checkOnTopOfEnemy();
           this.checkBonusHP(); // collect yellow chicken
         //   this.checkUnstoppable();
-          // this.checkBackgroundMusic();
+          this.checkBackgroundMusic();
         //   this.character.checkIdleMode();
-        //   this.stopGame();
+          this.stopGame();
         }, 50);
     }
 
-    // checkBackgroundMusic() {
-    //     if (this.bgMusicWanted()) {
-    //       this.character.audio_background.play();
-    //       this.character.audio_background.volume = 0.25;
-    //     } else this.character.audio_background.pause();
-    // }
+    checkBackgroundMusic() {
+        if (this.bgMusicWanted()) {
+          this.character.audio_background.play();
+          this.character.audio_background.volume = 0.25;
+        } else this.character.audio_background.pause();
+    }
 
-    // bgMusicWanted() {
-    //   return gameOver === false && !this.character.mute && !this.character.muteBg;
-    // }
+    bgMusicWanted() {
+      return gameOver === false && !this.character.mute && !this.character.muteBg;
+    }
 
     checkCollisions() {
       this.level.enemies.forEach((enemy) => {
@@ -246,6 +246,27 @@ class World {
         this.endboss.attack();
       }
     }
+
+    stopGame() {
+      if (this.character.energy == 0) {
+        this.character.playAnimation(this.character.images_dying);
+        setTimeout(() => {
+          this.showEndscreen();
+        }, 450);
+      }
+      if (this.endboss.energy == 0) {
+        setTimeout(() => {
+          this.showEndscreen();
+        }, 2000);
+      }
+    }
+
+    showEndscreen() {
+      document.getElementById('endScreenContainer').classList.remove('d-none');
+      // this.clearIntervals();
+      // this.resetLvl();
+      // this.character.audio_background.pause();
+    }
 }
 
 
@@ -262,19 +283,6 @@ class World {
 //       this.resetSmallChickens();
 //     }
   
-//     stopGame() {
-//       if (this.character.energy == 0) {
-//         this.character.playAnimation(this.character.images_dying);
-//         setTimeout(() => {
-//           this.showEndscreen();
-//         }, 450);
-//       }
-//       if (this.endboss.energy == 0) {
-//         setTimeout(() => {
-//           this.showEndscreen();
-//         }, 2000);
-//       }
-//     }
   
 //     checkUnstoppable() {
 //       if (this.character.collectedCoins === 12) this.character.unstoppable = true;
@@ -359,13 +367,6 @@ class World {
 //         new smallChicken(),
 //         new smallChicken()
 //       );
-//     }
-  
-//     showEndscreen() {
-//       document.getElementById("endScreenContainer").style.display = "block";
-//       this.clearIntervals();
-//       this.resetLvl();
-//       this.character.audio_background.pause();
 //     }
   
 //     stopUnstoppableMode() {
