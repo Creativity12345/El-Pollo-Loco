@@ -73,13 +73,13 @@ class Character extends MovableObject {
 
     walking_sound = new Audio('audio/running.m4a');
     snore_sound = new Audio('audio/snore.mp3');
-    audio_collectCoin = new Audio("audio/coinCollect1.mp3");
-    audio_jump = new Audio("audio/jump.mp3");
-    audio_collectBottle = new Audio("audio/collectBottle.mp3");
-    audio_smashingBottle = new Audio("audio/bottleSmash.mp3");
-    audio_bonusHP = new Audio("audio/chickenHitted.mp3");
-    audio_hurt = new Audio("audio/hurt.mp3");
-    audio_background = new Audio("audio/backgroundMusic.mp3");
+    audio_collectCoin = new Audio('audio/coinCollect1.mp3');
+    audio_jump = new Audio('audio/jump.mp3');
+    audio_collectBottle = new Audio('audio/collectBottle.mp3');
+    audio_smashingBottle = new Audio('audio/bottleSmash.mp3');
+    audio_bonusHP = new Audio('audio/chickenHitted.mp3');
+    audio_hurt = new Audio('audio/hurt.mp3');
+    audio_background = new Audio('audio/backgroundMusic.mp3');
     offsetLeft = 20;
     offsetRight = 50;
     offsetTop = 90;
