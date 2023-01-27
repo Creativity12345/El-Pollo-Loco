@@ -6,6 +6,8 @@ class Character extends MovableObject {
     walking_sound = new Audio('audio/running.m4a');
     doAnimation = true;
     lastInteraction = 0;
+    mute = false;
+    muteBg = false;
     idle = false;
     longIdle = false;
     y = 230;

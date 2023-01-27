@@ -99,9 +99,9 @@ class Endboss extends MovableObject{
         if (this.energy == 0) {
             this.speed = 0;
             this.playAnimation(this.IMAGES_DYING);
-        if(!world.character.mute) {
-            this.audio_dying.play();
-        }
+        // if(!world.character.mute) {
+        //     this.audio_dying.play();
+        // }
         }
     }
 

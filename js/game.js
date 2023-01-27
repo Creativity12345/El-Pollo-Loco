@@ -125,6 +125,20 @@ function removeClasses() {
     document.getElementById('endScreenContainer').classList.add('d-none');
 }
 
+function mute() {
+  if (!world.character.mute) {
+    world.character.mute = true;
+  } 
+  else {
+    world.character.mute = false;
+  } 
+}
+
+function bgMusic() {
+  if (!world.character.muteBg) world.character.muteBg = true;
+  else world.character.muteBg = false;
+}
+
 
 
 
@@ -135,21 +149,6 @@ function removeClasses() {
 // function init() {
 //     bindTouchBtns();
 //   }
-
-
-// function mute() {
-//   if (!world.character.mute) {
-//     world.character.mute = true;
-//   } 
-//   else {
-//     world.character.mute = false;
-//   } 
-// }
-
-// function bgMusic() {
-//   if (!world.character.muteBg) world.character.muteBg = true;
-//   else world.character.muteBg = false;
-// }
 
 
 // function openControls() {
