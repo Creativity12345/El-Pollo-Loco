@@ -8,7 +8,7 @@ class Endboss extends MovableObject{
     offsetBottom = 110;
     activated = false;
     x = 2500;
-    energy = 3;
+    energy = 100;
     speed = 7.5;
     otherDirection = false;
 
@@ -65,13 +65,13 @@ class Endboss extends MovableObject{
     }
 
     checkCondition() {
-        if (this.energy == 3) this.playAnimation(this.IMAGES_ALERT);
-        if (this.energy < 3 && !this.otherDirection) {
+        if (this.energy == 100) this.playAnimation(this.IMAGES_ALERT);
+        if (this.energy < 100 && !this.otherDirection) {
             this.playAnimation(this.IMAGES_ATTACK);
             this.moveLeft();
             this.changeDirectionRight();
         }
-        if (this.energy < 3 && this.otherDirection) {
+        if (this.energy < 100 && this.otherDirection) {
             this.playAnimation(this.IMAGES_ATTACK);
             this.moveRight();
             this.changeDirectionLeft();
@@ -81,7 +81,7 @@ class Endboss extends MovableObject{
 
     hitted() {
         this.playAnimation(this.IMAGES_HURT);
-        this.energy--;
+        this.energy -= 20;
     }
 
     checkIsDead() {
