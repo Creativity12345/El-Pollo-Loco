@@ -87,21 +87,15 @@ class MovableObject extends DrawableObject {
         this.speedY = 20;
     }
 
+    isOnTop(mo) {
+      return (
+        this.y + this.height &&
+        this.x + this.width >= mo.y + mo.height &&
+        mo.x + mo.width
+      );
+    }
+
     gameOver() {
         document.getElementById('endScreenContainer').classList.remove('d-none');
     }
 }
-
-
-
-
-
-  
-  
-//     isOnTop(mo) {
-//       return (
-//         this.y + this.height &&
-//         this.x + this.width >= mo.y + mo.height &&
-//         mo.x + mo.width
-//       );
-//     }
