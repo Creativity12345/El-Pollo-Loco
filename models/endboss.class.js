@@ -7,7 +7,7 @@ class Endboss extends MovableObject{
     offsetTop = 90;
     offsetBottom = 110;
     activated = false;
-    x = 2500;
+    x = 3000;
     energy = 100;
     speed = 7.5;
     otherDirection = false;
@@ -66,12 +66,10 @@ class Endboss extends MovableObject{
     }
 
     animate(){
-        // if (this.x > 2400) {
             setInterval(() => {
                 this.playAnimation(this.IMAGES_WALKING);
                 this.moveLeft();
             }, 150);        
-        // }
     }
 
     checkCondition() {
