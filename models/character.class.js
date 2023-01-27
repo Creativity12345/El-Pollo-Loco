@@ -226,19 +226,3 @@ class Character extends MovableObject {
       );
     }
 }
-
-
-
-
-
-
-// class Character extends MovableObject {
-//     unstoppable = false;
-//     mute = false;
-//     muteBg = false;
-  
-  
-//     animate() {
-//     }
-
-  
