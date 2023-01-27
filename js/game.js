@@ -154,56 +154,56 @@ function bgMusic() {
 
 
 // function openControls() {
-//   if (document.getElementById("instructions").classList.contains("d-none")) {
-//     document.getElementById("instructions").classList.remove("d-none");
+//   if (document.getElementById('instructions').classList.contains('d-none')) {
+//     document.getElementById('instructions').classList.remove('d-none');
 //   } else {
-//     document.getElementById("instructions").classList.add("d-none");
+//     document.getElementById('instructions').classList.add('d-none');
 //   }
 // }
 
 // function closeControls() {
-//   document.getElementById("instructions").classList.add("d-none");
+//   document.getElementById('instructions').classList.add('d-none');
 // }
 
 
 // // einbindung von touchbtns
 // function bindTouchBtns() {
-//   document.getElementById("btn-left").addEventListener("touchstart", (e) => {
+//   document.getElementById('btn-left').addEventListener('touchstart', (e) => {
 //     e.preventDefault();
 //     keyboard.left = true;
 //   });
 
-//   document.getElementById("btn-left").addEventListener("touchend", (e) => {
+//   document.getElementById('btn-left').addEventListener('touchend', (e) => {
 //     e.preventDefault();
 //     keyboard.left = false;
 //   });
 
-//   document.getElementById("btn-right").addEventListener("touchstart", (e) => {
+//   document.getElementById('btn-right').addEventListener('touchstart', (e) => {
 //     e.preventDefault();
 //     keyboard.right = true;
 //   });
 
-//   document.getElementById("btn-right").addEventListener("touchend", (e) => {
+//   document.getElementById('btn-right').addEventListener('touchend', (e) => {
 //     e.preventDefault();
 //     keyboard.right = false;
 //   });
 
-//   document.getElementById("btn-jump").addEventListener("touchstart", (e) => {
+//   document.getElementById('btn-jump').addEventListener('touchstart', (e) => {
 //     e.preventDefault();
 //     keyboard.space = true;
 //   });
 
-//   document.getElementById("btn-jump").addEventListener("touchend", (e) => {
+//   document.getElementById('btn-jump').addEventListener('touchend', (e) => {
 //     e.preventDefault();
 //     keyboard.space = false;
 //   });
 
-//   document.getElementById("btn-throw").addEventListener("touchstart", (e) => {
+//   document.getElementById('btn-throw').addEventListener('touchstart', (e) => {
 //     e.preventDefault();
 //     keyboard.d = true;
 //   });
 
-//   document.getElementById("btn-throw").addEventListener("touchend", (e) => {
+//   document.getElementById('btn-throw').addEventListener('touchend', (e) => {
 //     e.preventDefault();
 //     keyboard.d = false;
 //   });
