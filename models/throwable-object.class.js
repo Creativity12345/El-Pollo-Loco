@@ -28,8 +28,8 @@ class ThrowableObject extends MovableObject {
   
     animate() {
       setStoppableInterval(() => {
-        if (this.y > 300) this.playAnimation(this.images_bottleSplash);
-        else this.playAnimation(this.images_bottleRotation);
+        if (this.y > 300) this.playAnimation(this.IMAGES_BOTTLESPLASH );
+        else this.playAnimation(this.IMAGES_BOTTLEROTATION);
       }, 100);
     }
   
