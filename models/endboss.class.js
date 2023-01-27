@@ -62,16 +62,17 @@ class Endboss extends MovableObject{
         this.loadImages(this.IMAGES_DYING);
         this.loadImages(this.IMAGES_ALERT);
         this.loadImages(this.IMAGES_HURT);
-        // this.animate();
+        this.animate();
     }
 
-    // animate(){
-    //     // if (this.x > 2400) {
-    //         setInterval(() => {
-    //             this.playAnimation(this.IMAGES_WALKING);
-    //         }, 150);        
-    //     // }
-    // }
+    animate(){
+        // if (this.x > 2400) {
+            setInterval(() => {
+                this.playAnimation(this.IMAGES_WALKING);
+                this.moveLeft();
+            }, 150);        
+        // }
+    }
 
     checkCondition() {
         if (this.energy == 3) this.playAnimation(this.IMAGES_ALERT);
