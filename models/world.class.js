@@ -48,7 +48,6 @@ class World {
           this.checkCollectingBottles();
           this.checkOnTopOfEnemy();
           this.checkBonusHP(); // collect yellow chicken
-        //   this.checkUnstoppable();
           this.checkBackgroundMusic();
           this.character.checkIdleMode();
           this.stopGame();
