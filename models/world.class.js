@@ -50,7 +50,7 @@ class World {
           this.checkBonusHP(); // collect yellow chicken
         //   this.checkUnstoppable();
           this.checkBackgroundMusic();
-        //   this.character.checkIdleMode();
+          this.character.checkIdleMode();
           this.stopGame();
         }, 50);
     }
@@ -249,7 +249,7 @@ class World {
 
     stopGame() {
       if (this.character.energy == 0) {
-        this.character.playAnimation(this.character.images_dying);
+        this.character.playAnimation(this.character.IMAGES_DEAD);
         setTimeout(() => {
           this.showEndscreen();
         }, 450);
@@ -263,9 +263,83 @@ class World {
 
     showEndscreen() {
       document.getElementById('endScreenContainer').classList.remove('d-none');
-      // this.clearIntervals();
-      // this.resetLvl();
-      // this.character.audio_background.pause();
+      this.clearIntervals();
+      this.resetLvl();
+      this.character.audio_background.pause();
+    }
+
+    resetLvl() {
+      this.resetChickens();
+      this.resetEndboss();
+      this.resetCoins();
+      this.resetBottles();
+      this.resetSmallChickens();
+    }
+
+    resetChickens() {
+      this.level.enemies.forEach((enemie) => {
+        enemie.hitted = false;
+        enemie.speed = 0.15 + Math.random() * 0.25;
+      });
+    }
+  
+    resetEndboss() {
+      this.endboss.energy = 3;
+    }
+  
+    resetCoins() {
+      this.level.coins.splice(0, this.level.coins.length);
+      this.level.coins.push(
+        new CollectableObject(400),
+        new CollectableObject(400 + 50),
+        new CollectableObject(400 + 100),
+        new CollectableObject(400 * 2),
+        new CollectableObject(400 * 2 + 50),
+        new CollectableObject(400 * 2 + 100),
+        new CollectableObject(400 * 3),
+        new CollectableObject(400 * 3 + 50),
+        new CollectableObject(400 * 3 + 100),
+        new CollectableObject(400 * 4),
+        new CollectableObject(400 * 4 + 50),
+        new CollectableObject(400 * 4 + 100),
+        new CollectableObject(400 * 5),
+        new CollectableObject(400 * 5 + 50),
+        new CollectableObject(400 * 5 + 100),
+      );
+    }
+  
+    resetBottles() {
+      this.level.bottles.splice(0, this.level.bottles.length);
+      this.level.bottles.push(
+        new CollectableBottle(250),
+        new CollectableBottle(300),
+        new CollectableBottle(650),
+        new CollectableBottle(700),
+        new CollectableBottle(1500),
+        new CollectableBottle(1550),
+      );
+    }
+  
+    resetSmallChickens() {
+      this.level.smallChicken.splice(0, this.level.smallChicken.length);
+      this.level.smallChicken.push(
+        new smallChicken(),
+        new smallChicken(),
+        new smallChicken(),
+        new smallChicken(),
+        new smallChicken(),
+        new smallChicken(),
+        new smallChicken(),
+      );
+    }
+
+    addAllObjects() {
+      this.addObjectsToMap(this.level.clouds);
+      this.addObjectsToMap(this.level.enemies);
+      this.addObjectsToMap(this.level.smallChicken);
+      this.addObjectsToMap(this.throwableObjects);
+      this.addObjectsToMap(this.level.coins);
+      this.addObjectsToMap(this.level.bottles);
     }
 }
 
@@ -273,15 +347,6 @@ class World {
 
 // class World {
 //     levelSize = 100;
-  
-  
-//     resetLvl() {
-//       this.resetChickens();
-//       this.resetEndboss();
-//       this.resetCoins();
-//       this.resetBottles();
-//       this.resetSmallChickens();
-//     }
   
   
 //     checkUnstoppable() {
@@ -314,75 +379,11 @@ class World {
 //         });
 //       }
 //     }
-  
 
-  
-//     resetChickens() {
-//       this.level.enemies.forEach((enemie) => {
-//         enemie.hitted = false;
-//         enemie.speed = 0.15 + Math.random() * 0.25;
-//       });
-//     }
-  
-//     resetEndboss() {
-//       this.endboss.energy = 3;
-//     }
-  
-//     resetCoins() {
-//       this.level.coins.splice(0, this.level.coins.length);
-//       this.level.coins.push(
-//         new CollectableObject(400),
-//         new CollectableObject(400 + 50),
-//         new CollectableObject(400 + 100),
-//         new CollectableObject(400 * 2),
-//         new CollectableObject(400 * 2 + 50),
-//         new CollectableObject(400 * 2 + 100),
-//         new CollectableObject(400 * 3),
-//         new CollectableObject(400 * 3 + 50),
-//         new CollectableObject(400 * 3 + 100),
-//         new CollectableObject(400 * 4),
-//         new CollectableObject(400 * 4 + 50),
-//         new CollectableObject(400 * 4 + 100),
-//         new CollectableObject(400 * 5),
-//         new CollectableObject(400 * 5 + 50),
-//         new CollectableObject(400 * 5 + 100)
-//       );
-//     }
-  
-//     resetBottles() {
-//       this.level.bottles.splice(0, this.level.bottles.length);
-//       this.level.bottles.push(
-//         new CollectableBottle(650),
-//         new CollectableBottle(1150),
-//         new CollectableBottle(1500),
-//         new CollectableBottle(2000),
-//         new CollectableBottle(2500)
-//       );
-//     }
-  
-//     resetSmallChickens() {
-//       this.level.smallChicken.splice(0, this.level.smallChicken.length);
-//       this.level.smallChicken.push(
-//         new smallChicken(),
-//         new smallChicken(),
-//         new smallChicken()
-//       );
-//     }
-  
-//     stopUnstoppableMode() {
-//       this.character.unstoppable = false;
-//       this.character.collectedCoins = 0;
-//       this.character.speed = 4;
-//       document.getElementById("unstoppable").classList.add("d-none");
-//       this.StatusBarCoins.setPercentage(this.character.collectedCoins);
-//     }
-
-  
-//     addAllObjects() {
-//       this.addObjectsToMap(this.level.clouds);
-//       this.addObjectsToMap(this.level.enemies);
-//       this.addObjectsToMap(this.level.smallChicken);
-//       this.addObjectsToMap(this.throwableObjects);
-//       this.addObjectsToMap(this.level.coins);
-//       this.addObjectsToMap(this.level.bottles);
-//     }
+// stopUnstoppableMode() {
+//   this.character.unstoppable = false;
+//   this.character.collectedCoins = 0;
+//   this.character.speed = 4;
+//   document.getElementById("unstoppable").classList.add("d-none");
+//   this.StatusBarCoins.setPercentage(this.character.collectedCoins);
+// }
