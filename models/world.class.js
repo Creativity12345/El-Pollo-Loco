@@ -149,7 +149,7 @@ class World {
       if (this.keyboard.D && this.character.collectedBottles > 0) {
         let bottle = new ThrowableObject(
           this.character.x + 100,
-          this.character.y + 100
+          this.character.y + 100,
         );
         this.throwableObjects.push(bottle);
         this.character.collectedBottles--;
@@ -164,13 +164,13 @@ class World {
           hittedsound.playbackRate = 3;
           if (!this.character.mute) hittedsound.play();
           this.endboss.hitted();
-          this.StatusBarEndboss.setPercentage(this.endboss.energy);
+          this.statusBarEndboss.setPercentage(this.endboss.energy);
         } else if (this.endboss.isCollidingCollectables(this.character)) {
           this.character.hit();
           let hurtsound = this.character.audio_hurt;
           hurtsound.playbackRate = 3;
           if (!this.character.mute) hurtsound.play();
-          this.StatusBarHealth.setPercentage(this.character.energy);
+          this.statusBarHealth.setPercentage(this.character.energy);
         }
       });
     }
@@ -189,6 +189,7 @@ class World {
         this.addToMap(this.statusBarCoins);
         if (this.character.x > 2000) {
             this.addToMap(this.statusBarEndboss);
+            this.addToMap(this.endboss);
         }
         this.ctx.translate(this.camera_x, 0); // Forward
 
@@ -241,7 +242,7 @@ class World {
     }
 
     endbossAttacking() {
-      if (this.character.x >= 3000) {
+      if (this.character.x >= 2000) {
         this.endboss.attack();
       }
     }
