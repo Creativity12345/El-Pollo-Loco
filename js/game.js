@@ -88,6 +88,7 @@ function enterFullscreen() {
     document.getElementById('enterFullscreenBtn').classList.add('d-none');
     document.getElementById('exitFullscreenBtn').classList.remove('d-none');
     document.getElementById('startScreenImg').classList.add('startScreenImgFullscreen');
+    document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
     document.getElementById('canvas').classList.add('canvasFullScreen');
     document.getElementById('title').classList.add('d-none');
     document.getElementById('instruction').classList.add('d-none');
@@ -108,6 +109,7 @@ function toSmall() {
     document.getElementById('enterFullscreenBtn').classList.remove('d-none');
     document.getElementById('exitFullscreenBtn').classList.add('d-none');
     document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
+    document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
     document.getElementById('canvas').classList.remove('canvasFullScreen');
     document.getElementById('title').classList.remove('d-none');
     document.getElementById('instruction').classList.remove('d-none');
