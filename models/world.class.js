@@ -176,38 +176,31 @@ class World {
     }
 
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.ctx.translate(this.camera_x, 0); //Standart
-
-        this.addObjectsToMap(this.level.backgroundObjects);
-
-        this.ctx.translate(-this.camera_x, 0); //Back
-        // ----------- Space for fixed objects!!! ----------------
-        this.addToMap(this.statusBarHealth);
-        this.addToMap(this.statusBarBottle);
-        this.addToMap(this.statusBarCoins);
-        if (this.character.x > 2000) {
-            this.addToMap(this.statusBarEndboss);
-        }
-        this.ctx.translate(this.camera_x, 0); // Forward
-
+      this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+      this.ctx.translate(this.camera_x, 0);
+      this.addObjectsToMap(this.level.backgroundObjects);
+      if (this.character.doAnimation) {
         this.addToMap(this.character);
-
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.smallChicken);
-        this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.throwableObjects);
-        this.addObjectsToMap(this.level.bottles);
-        this.addObjectsToMap(this.level.coins);
-
+        this.addToMap(this.endboss);
         this.ctx.translate(-this.camera_x, 0);
-
-        // draw() wird immer wieder aufgerufen 
+        this.addStatusbars();
+        this.ctx.translate(this.camera_x, 0);
+        this.addAllObjects();
+        this.ctx.translate(-this.camera_x, 0);
         let self = this;
         requestAnimationFrame(function () {
-            self.draw();
+          self.draw();
         });
+      }
+    }
+
+    addStatusbars() {
+      this.addToMap(this.statusBarHealth);
+      this.addToMap(this.statusBarBottle);
+      this.addToMap(this.statusBarCoins);
+      if (this.character.x > 2000) {
+        this.addToMap(this.statusBarEndboss);
+      }
     }
 
     addObjectsToMap(objects) {

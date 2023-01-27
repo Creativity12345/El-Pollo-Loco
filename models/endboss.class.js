@@ -7,8 +7,8 @@ class Endboss extends MovableObject{
     offsetTop = 90;
     offsetBottom = 110;
     activated = false;
-    x = 3000;
-    energy = 100;
+    x = 2500;
+    energy = 3;
     speed = 7.5;
     otherDirection = false;
 
@@ -62,15 +62,15 @@ class Endboss extends MovableObject{
         this.loadImages(this.IMAGES_DYING);
         this.loadImages(this.IMAGES_ALERT);
         this.loadImages(this.IMAGES_HURT);
-        this.animate();
+        // this.animate();
     }
 
-    animate(){
-            setInterval(() => {
-                this.playAnimation(this.IMAGES_WALKING);
-                this.moveLeft();
-            }, 150);        
-    }
+    // animate(){
+    //         setInterval(() => {
+    //             this.playAnimation(this.IMAGES_WALKING);
+    //             this.moveLeft();
+    //         }, 150);        
+    // }
 
     checkCondition() {
         if (this.energy == 3) this.playAnimation(this.IMAGES_ALERT);
