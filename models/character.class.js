@@ -3,7 +3,6 @@ class Character extends MovableObject {
     collectedCoins = 0;
     collectedBottles = 0;
     boostHP = false;
-    walking_sound = new Audio('audio/running.m4a');
     doAnimation = true;
     lastInteraction = 0;
     mute = false;
@@ -72,6 +71,8 @@ class Character extends MovableObject {
     ];
     IMAGE_DEAD = ['img/2_character_pepe/5_dead/D-57.png'];
 
+    walking_sound = new Audio('audio/running.m4a');
+    snore_sound = new Audio('audio/snore.mp3');
     audio_collectCoin = new Audio("audio/coinCollect1.mp3");
     audio_jump = new Audio("audio/jump.mp3");
     audio_collectBottle = new Audio("audio/collectBottle.mp3");
@@ -157,6 +158,7 @@ class Character extends MovableObject {
           if (timepassed > 6) {
             this.idle = false;
             this.longIdle = true;
+            this.snore_sound.play();
           }
         }
       }, 1000);
@@ -173,6 +175,8 @@ class Character extends MovableObject {
     deactivateIdleMode() {
       this.idle = false;
       this.longIdle = false;
+      this.snore_sound.pause();
+      this.snore_sound.currentTime = 0;
     }
 
     moveCharacter() {
