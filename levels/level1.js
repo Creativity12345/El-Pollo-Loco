@@ -22,7 +22,6 @@ function createChickens() {
         new Chicken(),
         new Chicken(),
         new Chicken(),
-        new Endboss(),
     ];
 }
 
