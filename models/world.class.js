@@ -88,8 +88,7 @@ class World {
     characterCanBeHurt() {
       return (
         !this.character.isAboveGround() &&
-        !this.character.isHurt() &&
-        !this.character.unstoppable
+        !this.character.isHurt()
       );
     }
 

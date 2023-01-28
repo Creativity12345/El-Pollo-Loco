@@ -72,7 +72,7 @@ class Character extends MovableObject {
     IMAGE_DEAD = ['img/2_character_pepe/5_dead/D-57.png'];
 
     walking_sound = new Audio('audio/running.m4a');
-    snore_sound = new Audio('audio/snore.mp3');
+    audio_snore = new Audio('audio/snore.mp3');
     audio_collectCoin = new Audio('audio/coinCollect1.mp3');
     audio_jump = new Audio('audio/jump.mp3');
     audio_collectBottle = new Audio('audio/collectBottle.mp3');
@@ -80,6 +80,7 @@ class Character extends MovableObject {
     audio_bonusHP = new Audio('audio/chickenHitted.mp3');
     audio_hurt = new Audio('audio/hurt.mp3');
     audio_background = new Audio('audio/backgroundMusic.mp3');
+    audio_lose = new Audio('audio/lose.mp3');
     offsetLeft = 20;
     offsetRight = 50;
     offsetTop = 90;
@@ -118,6 +119,7 @@ class Character extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                this.audio_snore.pause();
             } else if (this.isHurt()){
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) {
@@ -136,7 +138,7 @@ class Character extends MovableObject {
     playCharacterAnimations() {
       if (this.idle) this.playAnimation(this.IMAGES_IDLE);
       if (this.longIdle) this.playAnimation(this.IMAGES_LONGIDLE);
-      if (this.isDead()) this.playAnimation(this.IMAGES_DEAD);
+      if (this.isDead()) this.playAnimation(this.IMAGES_DEAD), this.audio_lose.play();
       else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
       else if (this.isAboveGround()) this.playAnimation(this.IMAGES_JUMPING);
       else if (this.characterIsWalkingOnGround())
