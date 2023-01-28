@@ -71,7 +71,7 @@ class Character extends MovableObject {
     ];
     IMAGE_DEAD = ['img/2_character_pepe/5_dead/D-57.png'];
 
-    walking_sound = new Audio('audio/running.m4a');
+    audio_walking = new Audio('audio/running.m4a');
     audio_snore = new Audio('audio/snore.mp3');
     audio_collectCoin = new Audio('audio/coinCollect1.mp3');
     audio_jump = new Audio('audio/jump.mp3');
@@ -103,12 +103,12 @@ class Character extends MovableObject {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
-                this.walking_sound.play();
+                this.audio_walking.play();
             }
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
-                this.walking_sound.play();
+                this.audio_walking.play();
             }
             if (this.world.keyboard.UP && !this.isAboveGround() || this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
@@ -160,7 +160,7 @@ class Character extends MovableObject {
           if (timepassed > 6) {
             this.idle = false;
             this.longIdle = true;
-            this.snore_sound.play();
+            this.audio_snore.play();
             this.audio_background.pause();
           }
         }
@@ -178,8 +178,8 @@ class Character extends MovableObject {
     deactivateIdleMode() {
       this.idle = false;
       this.longIdle = false;
-      this.snore_sound.pause();
-      this.snore_sound.currentTime = 0;
+      this.audio_snore.pause();
+      this.audio_snore.currentTime = 0;
     }
 
     moveCharacter() {
