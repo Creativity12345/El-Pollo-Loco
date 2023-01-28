@@ -15,6 +15,7 @@ class World {
     clearIntervals;
     collectedCoinsStorage = [];
 
+    audio_hittedBoss = new Audio('audio/hittedBoss.mp3');
 
     constructor(canvas, keyboard, clearIntervals, gameOver) {
         this.ctx = canvas.getContext('2d');
@@ -70,7 +71,6 @@ class World {
         if (this.characterCanCollide(enemy)) {
           this.character.hit();
           let hurtsound = this.character.audio_hurt;
-          hurtsound.playbackRate = 3;
           if (!this.character.mute) hurtsound.play();
           this.statusBarHealth.setPercentage(this.character.energy);
         }
@@ -159,15 +159,13 @@ class World {
     checkEndbossKilled() {
       this.throwableObjects.forEach((tO) => {
         if (this.endboss.isCollidingCollectables(tO)) {
-          let hittedsound = this.character.audio_smashingBottle;
-          hittedsound.playbackRate = 3;
+          let hittedsound = this.audio_hittedBoss;
           if (!this.character.mute) hittedsound.play();
           this.endboss.hitted();
           this.statusBarEndboss.setPercentage(this.endboss.energy);
         } else if (this.endboss.isCollidingCollectables(this.character)) {
           this.character.hit();
           let hurtsound = this.character.audio_hurt;
-          hurtsound.playbackRate = 3;
           if (!this.character.mute) hurtsound.play();
           this.statusBarHealth.setPercentage(this.character.energy);
         }
