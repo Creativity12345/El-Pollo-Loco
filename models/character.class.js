@@ -159,6 +159,7 @@ class Character extends MovableObject {
             this.idle = false;
             this.longIdle = true;
             this.snore_sound.play();
+            this.audio_background.pause();
           }
         }
       }, 1000);
