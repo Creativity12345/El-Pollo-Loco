@@ -4,7 +4,7 @@ let keyboard = new Keyboard();
 let intervalIds = []; // hier drin werden alle intervalle gespeichert
 let gameOver = false;
 let stopGameVariable = function stopGame() {
-  // in variable um es in die world.js im constructor zu übergeben
+  // Variable um es in die world.js im constructor zu übergeben
   intervalIds.forEach(clearInterval);
 };
 
