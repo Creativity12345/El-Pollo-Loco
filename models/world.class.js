@@ -198,7 +198,7 @@ class World {
       this.addToMap(this.statusBarHealth);
       this.addToMap(this.statusBarBottle);
       this.addToMap(this.statusBarCoins);
-      if (this.character.x > 2000) {
+      if (this.character.x > 1900) {
         this.addToMap(this.statusBarEndboss);
       }
     }
