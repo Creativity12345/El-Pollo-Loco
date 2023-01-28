@@ -46,17 +46,59 @@
             <img id="startScreenImg" src="img/9_intro_outro_screens/start/startscreen_1.png" alt="" />
             <span id="playBtn" onclick="init()">Play</span>
         </div>
-        <img id="enterFullscreenBtn" class="fullscreenBtn" src="img/enterFullscreen.png" onclick="enterFullscreen()" alt="">
-        <img id="exitFullscreenBtn" class="fullscreenBtn d-none" src="img/exitFullscreen.png" onclick="toSmall()" alt="">
+        <img id="enterFullscreenBtn" class="fullscreenBtn" src="img/enterFullscreen.png" onclick="enterFullscreen()"
+            alt="">
+        <img id="exitFullscreenBtn" class="fullscreenBtn d-none" src="img/exitFullscreen.png" onclick="toSmall()"
+            alt="">
 
         <!-- Endscreen -->
         <div id="endScreenContainer" class="d-none">
-            <img id="endScreenImg" src="img/9_intro_outro_screens/game_over/game over.png" alt=""/>
-            <span id="restartBtn" class="buttonContainer" onclick="init()">Restart</span> 
+            <img id="endScreenImg" src="img/9_intro_outro_screens/game_over/game over.png" alt="" />
+            <span id="restartBtn" class="buttonContainer" onclick="init()">Restart</span>
+        </div>
+
+        <!-- HUD Mobile -->
+        <div id="hud" class="d-none">
+            <div class="upperPanel">
+                <!-- <button id="btn-mute" class="mobileBtns">
+                    <img id="muteImg" src="./img/icons/mute-2.png" alt="" onclick="mute()" />
+                </button> -->
+
+                <!-- <button id="btn-controls" class="mobileBtns">
+                    <img src="./img/icons/controls-beige.png" alt="" onclick="openControls()" />
+                </button> -->
+
+                <button id="btn-muteBg" class="mobileBtns">
+                    <img id="muteBtnImg" src="./img/mute.png" alt="" onclick="bgMusic()" />
+                </button>
+            </div>
+            <div class="panel">
+                <div class="panel-wrapper">
+                    <button id="btn-left" class="mobileBtns d-none">
+                        <img src="./img/arrowLeft.png" alt="" />
+                    </button>
+                    <button id="btn-right" class="mobileBtns d-none">
+                        <img src="./img/arrowRight.png" alt="" />
+                    </button>
+                </div>
+                <div class="panel-wrapper">
+                    <button id="btn-jump" class="mobileBtns d-none">
+                        <img src="./img/arrowUp.png" alt="" />
+                    </button>
+                    <button id="btn-throw" class="mobileBtns d-none">
+                        <img src="./img/arrowThrow.png" alt="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rotate Device Overlay -->
+        <div id="bg-rotate-device"> 
+            <span id="rotate-device-text">Rotate Device</span>
         </div>
     </div>
 
-    <h2 id="instruction">Bewegen = Pfeiltasten ⬅︎ ➡︎ | Springen = Space / ⬆︎ | Werfen = D</h2>
+        <h2 id="instruction">Bewegen = Pfeiltasten ⬅︎ ➡︎ | Springen = Space / ⬆︎ | Werfen = D</h2>
 
 </body>
 

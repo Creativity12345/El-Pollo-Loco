@@ -10,8 +10,9 @@ let stopGameVariable = function stopGame() {
 
 
 function init() {
-    removeClasses();
     initLevel1();
+    // bindTouchBtns();
+    removeClasses();
     document.getElementById('startScreenContainer').classList.add('d-none');
     document.getElementById('endScreenContainer').classList.add('d-none');
     canvas = document.getElementById('canvas');
@@ -139,4 +140,48 @@ function mute() {
 function bgMusic() {
   if (!world.character.muteBg) world.character.muteBg = true;
   else world.character.muteBg = false;
+}
+
+
+// add touchbuttons
+function bindTouchBtns() {
+  document.getElementById('btn-left').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.left = true;
+  });
+
+  document.getElementById('btn-left').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.left = false;
+  });
+
+  document.getElementById('btn-right').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.right = true;
+  });
+
+  document.getElementById('btn-right').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.right = false;
+  });
+
+  document.getElementById('btn-jump').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.space = true;
+  });
+
+  document.getElementById('btn-jump').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.space = false;
+  });
+
+  document.getElementById('btn-throw').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.d = true;
+  });
+
+  document.getElementById('btn-throw').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.d = false;
+  });
 }
