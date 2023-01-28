@@ -31,9 +31,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-      if (
-        this.canDrawFrame()
-      ) {
+      if (this.canDrawFrame()) {
         ctx.beginPath();
         ctx.lineWidth = '3';
         ctx.strokeStyle = 'blue';
