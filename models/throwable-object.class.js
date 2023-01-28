@@ -15,6 +15,7 @@ class ThrowableObject extends MovableObject {
     ];
 
     audio_throw = new Audio('audio/throw.mp3');
+    audio_smashingBottle = new Audio('audio/bottleSmash.mp3');
   
     constructor(x, y) {
       super().loadImage('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
@@ -29,9 +30,15 @@ class ThrowableObject extends MovableObject {
     }
   
     animate() {
+      let bottleSmashed = false;
       setStoppableInterval(() => {
-        if (this.y > 300) this.playAnimation(this.IMAGES_BOTTLESPLASH);
-        else this.playAnimation(this.IMAGES_BOTTLEROTATION);
+        if (this.y > 300 && !bottleSmashed) {
+          this.playAnimation(this.IMAGES_BOTTLESPLASH);
+          this.audio_smashingBottle.play();
+          bottleSmashed = true;
+        } else {
+          this.playAnimation(this.IMAGES_BOTTLEROTATION);
+        }
       }, 100);
     }
   
