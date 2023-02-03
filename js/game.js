@@ -128,14 +128,18 @@ function removeClasses() {
     document.getElementById('endScreenContainer').classList.add('d-none');
 }
 
+
 function mute() {
   if (!world.character.mute) {
     world.character.mute = true;
+    world.character.audio_snore.volume = 0;
   } 
   else {
     world.character.mute = false;
+    world.character.audio_snore.volume = 1;
   } 
 }
+
 
 function bgMusic() {
   if (!world.character.muteBg) world.character.muteBg = true;
