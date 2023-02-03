@@ -97,6 +97,14 @@ class Character extends MovableObject {
         this.animate();
     }
 
+
+    /**
+    * animate method
+    * 
+    * Sets up interval methods for the character's movement, animations, and audio, 
+    * including walking, jumping, and idling. 
+    * 
+    */
     animate() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -134,6 +142,13 @@ class Character extends MovableObject {
         setStoppableInterval(() => this.playCharacterAnimations(), 60);
     }
 
+    /**
+    * playCharacterAnimations method
+    * 
+    * Plays the appropriate animations for the character depending on their state
+    * (dead, hurt, jumping, or walking)
+    * 
+    */
     playCharacterAnimations() {
       if (this.idle) this.playAnimation(this.IMAGES_IDLE);
       if (this.longIdle) this.playAnimation(this.IMAGES_LONGIDLE);
@@ -144,10 +159,21 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_WALKING);
     }
 
+    /**
+    * jump method
+    * 
+    * Makes the character jump by setting its speed in the Y direction
+    * 
+    */
     jump() {
         this.speedY = 20;
     }
 
+    /**
+    * The `checkIdleMode` function sets an interval that checks the time elapsed since the last interaction with the game.
+    * If the time elapsed is greater than 3 seconds, it sets the `idle` property to `true`.
+    * If the time elapsed is greater than 6 seconds, it sets the `idle` property to `false`, `longIdle` property to `true`, and plays the `audio_snore` and pauses the `audio_background`.
+    */
     checkIdleMode() {
       setStoppableInterval(() => {
         if (this.inactive()) {
@@ -166,6 +192,10 @@ class Character extends MovableObject {
       }, 1000);
     }
 
+    /**
+    * The `inactive` function returns `true` if none of the right, left or space keys on the keyboard are active.
+    * @returns {boolean}
+    */
     inactive() {
       return (
         !this.world.keyboard.right ||
@@ -174,6 +204,9 @@ class Character extends MovableObject {
       );
     }
 
+    /**
+    * The `deactivateIdleMode` function sets the `idle` property to `false`, `longIdle` property to `false`, pauses the `audio_snore`, and resets its current time to 0.
+    */
     deactivateIdleMode() {
       this.idle = false;
       this.longIdle = false;
@@ -181,6 +214,13 @@ class Character extends MovableObject {
       this.audio_snore.currentTime = 0;
     }
 
+    /**
+    * The `moveCharacter` function moves the character based on the active keys.
+    * If the right key is active, it moves the character to the right.
+    * If the left key is active, it moves the character to the left.
+    * If the space key is active, it makes the character jump.
+    * It also moves the camera.
+    */
     moveCharacter() {
       if (this.canMoveRight()) this.moveRight();
       if (this.canMoveLeft()) this.moveLeft();
@@ -188,10 +228,17 @@ class Character extends MovableObject {
       this.moveCamera();
     }
   
+    /**
+    * The `canMoveRight` function returns `true` if the right key on the keyboard is active and the character's x position is less than the level end x position.
+    * @returns {boolean}
+    */
     canMoveRight() {
       return this.world.keyboard.right && this.x < this.world.level.level_end_x;
     }
   
+    /**
+    * The `moveRight` function moves the character to the right, deactivates the idle mode, sets the `otherDirection` property to `false`, and updates the `lastInteraction` time.
+    */
     moveRight() {
       super.moveRight();
       this.deactivateIdleMode();
@@ -199,10 +246,17 @@ class Character extends MovableObject {
       this.lastInteraction = new Date().getTime();
     }
   
+    /**
+    * The `canMoveLeft` function returns `true` if the left key on the keyboard is active and the character's x position is greater than 0.
+    * @returns {boolean}
+    */
     canMoveLeft() {
       return this.world.keyboard.left && this.x > 0;
     }
   
+    /**
+    * The `moveLeft` function moves the character to the left, deactivates the idle mode, sets the `otherDirection` property to `true`, and updates the `lastInteraction` time.
+    */
     moveLeft() {
       super.moveLeft();
       this.deactivateIdleMode();
@@ -210,24 +264,38 @@ class Character extends MovableObject {
       this.lastInteraction = new Date().getTime();
     }
   
+    /**
+    * The `canJump` function returns `true` if the space key on the keyboard is active and the character is not above the ground.
+    * @returns {boolean}
+    */
     canJump() {
       return this.world.keyboard.space && !this.isAboveGround();
     }
   
+    /**
+    * The `jump` function makes the character jump, deactivates the idle mode, and updates the `lastInteraction` time.
+    */
     jump() {
       super.jump();
       this.deactivateIdleMode();
       this.lastInteraction = new Date().getTime();
     }
   
+    /**
+    * The `moveCamera` function sets the camera's x position to the character's x position minus 100.
+    * @returns {number}
+    */
     moveCamera() {
       return (this.world.camera_x = -this.x + 100);
     }
   
+    /**
+    * The `characterIsWalkingOnGround` function returns `true` if either the right or left keys on the keyboard are active and the character is not above the ground.
+    */
     characterIsWalkingOnGround() {
       return (
         this.world.keyboard.right ||
         (this.world.keyboard.left && !this.isAboveGround())
       );
     }
-}
+}        
