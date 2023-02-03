@@ -147,32 +147,32 @@ function bgMusic() {
 function bindTouchBtns() {
   document.getElementById('btn-left').addEventListener('touchstart', (e) => {
     e.preventDefault();
-    keyboard.left = true;
+    keyboard.LEFT = true;
   });
 
   document.getElementById('btn-left').addEventListener('touchend', (e) => {
     e.preventDefault();
-    keyboard.left = false;
+    keyboard.LEFT = false;
   });
 
   document.getElementById('btn-right').addEventListener('touchstart', (e) => {
     e.preventDefault();
-    keyboard.right = true;
+    keyboard.RIGHT = true;
   });
 
   document.getElementById('btn-right').addEventListener('touchend', (e) => {
     e.preventDefault();
-    keyboard.right = false;
+    keyboard.RIGHT = false;
   });
 
   document.getElementById('btn-jump').addEventListener('touchstart', (e) => {
     e.preventDefault();
-    keyboard.space = true;
+    keyboard.SPACE = true;
   });
 
   document.getElementById('btn-jump').addEventListener('touchend', (e) => {
     e.preventDefault();
-    keyboard.space = false;
+    keyboard.SPACE = false;
   });
 
   document.getElementById('btn-throw').addEventListener('touchstart', (e) => {
