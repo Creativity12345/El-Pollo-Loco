@@ -1,5 +1,9 @@
 let level1;
 
+
+/**
+ * Initializes the Level1 object
+ */
 function initLevel1() {
     level1 = new Level(
         createChickens(),
@@ -12,6 +16,11 @@ function initLevel1() {
     );
 }
 
+
+/**
+ * Creates an array of chickens
+ * @returns {Array.<Chicken>}
+ */
 function createChickens() {
     return [
         new Chicken(),
@@ -25,6 +34,11 @@ function createChickens() {
     ];
 }
 
+
+/**
+ * Creates an array of small chickens
+ * @returns {Array.<SmallChicken>}
+ */
 function createSmallChicken() {
     return [
         new smallChicken(),
@@ -34,10 +48,20 @@ function createSmallChicken() {
     ];
 }
 
+
+/**
+ * Creates an array of clouds
+ * @returns {Array.<Cloud>}
+ */
 function createClouds() {
     return [(new Cloud(), new Cloud())];
 }
 
+
+/**
+ * Creates an array of background objects
+ * @returns {Array.<BackgroundObject>}
+ */
 function createBackgroundLayers() {
     return [
         new BackgroundObject('img/5_background/layers/air.png', -719),
@@ -63,10 +87,20 @@ function createBackgroundLayers() {
     ];
 }
 
+
+/**
+ * Creates an array of rotation images
+ * @returns {Array.<string>}
+ */
 function createRotationImg() {
     return ['img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png'];
 }
 
+
+/**
+ * Creates an array of collectable objects
+ * @returns {Array.<CollectableObject>}
+ */
 function createCoins() {
     return [
         new CollectableObject(400),
@@ -87,6 +121,11 @@ function createCoins() {
     ];
 }
 
+
+/**
+ * Creates an array of collectable bottles
+ * @returns {Array.<CollectableBottle>}
+ */
 function createBottles() {
     return [
         new CollectableBottle(250),
