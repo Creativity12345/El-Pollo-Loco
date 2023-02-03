@@ -17,6 +17,7 @@ body {
     font-family: 'zabars', Arial, Helvetica, sans-serif;
     margin: 0;
     height: 100vh;
+    width: 100%;
 }
 
 #content {
@@ -39,7 +40,7 @@ body {
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.802);
 }
 
-.startScreenImgFullscreen{
+.startScreenImgFullscreen {
     width: 100% !important;
     height: 100vh !important;
 }
@@ -70,7 +71,7 @@ body {
     bottom: 20px;
 }
 
-.fullscreenBtn:hover{
+.fullscreenBtn:hover {
     scale: 1.2;
     cursor: pointer;
 }
@@ -93,7 +94,7 @@ canvas {
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.802);
 }
 
-.canvasFullScreen{
+.canvasFullScreen {
     width: 100% !important;
     height: 100vh !important;
 }
@@ -110,7 +111,7 @@ canvas {
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.802);
 }
 
-.endScreenImgFullscreen{
+.endScreenImgFullscreen {
     width: 100% !important;
     height: 100vh !important;
 }
@@ -135,20 +136,82 @@ canvas {
     cursor: pointer;
 }
 
+#hud {
+    position: absolute;
+    top: 0;
+}
+
 /* Smartphones */
 @media only screen and (max-width: 720px) {
+    #content {
+        width: 100%;
+    }
+
     canvas {
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    #startScreenContainer {
+        width: 100%;
+    }
+
+    #startScreenImg{
+        border-radius: 0px;
+        width: 100%;
+    }
+
+    #endScreenContainer {
+        width: 100%;
+    }
+
+    #endScreenImg {
         width: 100%;
     }
 }
 
 /* Smartphones */
 @media only screen and (max-height: 480px) {
+    body{
+        background-image: none;
+    }
+
+    #content {
+       height: 100vh;
+       box-shadow: none;
+    }
+
     canvas {
         height: 100vh;
+        border-radius: 0px;
+        box-shadow: none;
     }
 
     .title {
         display: none;
+    }
+
+    #instruction {
+        display: none;
+    }
+
+    #startScreenContainer {
+        height: 100vh;
+    }
+
+    #startScreenImg{
+        border-radius: 0px;
+        height: 100vh;
+        box-shadow: none;
+    }
+
+    #endScreenContainer {
+        height: 100vh;
+    }
+
+    #endScreenImg {
+        border-radius: 0px;
+        height: 100vh;
+        box-shadow: none;
     }
 }
