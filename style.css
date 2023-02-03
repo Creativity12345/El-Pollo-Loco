@@ -43,6 +43,7 @@ body {
 .startScreenImgFullscreen {
     width: 100% !important;
     height: 100vh !important;
+    border-radius: 0px !important;
 }
 
 #playBtn {
@@ -97,6 +98,7 @@ canvas {
 .canvasFullScreen {
     width: 100% !important;
     height: 100vh !important;
+    border-radius: 0px !important;
 }
 
 #endScreenContainer {
@@ -114,6 +116,7 @@ canvas {
 .endScreenImgFullscreen {
     width: 100% !important;
     height: 100vh !important;
+    border-radius: 0px !important;
 }
 
 #restartBtn {
@@ -166,10 +169,10 @@ canvas {
     right: 10px;
 }
 
-/* .upperPanel:hover{
+.upperPanel:hover{
     scale: 1.2;
     cursor: pointer;
-} */
+}
 
 /* Smartphones */
 @media only screen and (max-width: 720px) {
@@ -267,6 +270,10 @@ canvas {
 
     .upperPanel{
         z-index: 2;
+    }
+
+    .upperPanel:hover{
+        scale: 1;
     }
 
     .panelWrapper{
