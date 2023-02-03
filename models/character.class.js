@@ -111,6 +111,7 @@ class Character extends MovableObject {
             }
             if (this.world.keyboard.UP && !this.isAboveGround() || this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
+                this.audio_jump.play();
             }
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
@@ -183,10 +184,7 @@ class Character extends MovableObject {
     moveCharacter() {
       if (this.canMoveRight()) this.moveRight();
       if (this.canMoveLeft()) this.moveLeft();
-      if (this.canJump()) {
-        if (!this.mute) this.audio_jump.play();
-        this.jump();
-      }
+      if (this.canJump()) this.jump();
       this.moveCamera();
     }
   
