@@ -34,7 +34,11 @@ class ThrowableObject extends MovableObject {
       setStoppableInterval(() => {
         if (this.y > 300 && !bottleSmashed) {
           this.playAnimation(this.IMAGES_BOTTLESPLASH);
-          this.audio_smashingBottle.play();
+          if (!world.character.mute) {
+            this.audio_smashingBottle.play();
+          }else{
+            this.audio_smashingBottle.volume = 0;
+          }
           bottleSmashed = true;
         } else {
           this.playAnimation(this.IMAGES_BOTTLEROTATION);
@@ -45,7 +49,13 @@ class ThrowableObject extends MovableObject {
     throw() {
       this.speedY = 20;
       this.applyGravity();
-      this.audio_throw.play();
+
+      if (!world.character.mute) {
+        this.audio_throw.play();
+      }else{
+        this.audio_throw.volume = 0;
+      }
+
       setStoppableInterval(() => {
         this.x += 20;
       }, 50);
