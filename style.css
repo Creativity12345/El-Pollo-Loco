@@ -279,6 +279,6 @@ canvas {
     }
 
     .fullscreenBtn{
-        z-index: 2;
+        display: none;
     }
 }
