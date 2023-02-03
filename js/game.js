@@ -11,7 +11,7 @@ let stopGameVariable = function stopGame() {
 
 function init() {
     initLevel1();
-    // bindTouchBtns();
+    bindTouchBtns();
     removeClasses();
     document.getElementById('startScreenContainer').classList.add('d-none');
     document.getElementById('endScreenContainer').classList.add('d-none');
