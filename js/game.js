@@ -132,11 +132,21 @@ function removeClasses() {
 function mute() {
   if (!world.character.mute) {
     world.character.mute = true;
+    world.character.audio_background.volume = 0;
     world.character.audio_snore.volume = 0;
+    world.character.audio_walking.volume = 0;
+    world.character.audio_jump.volume = 0;
+    world.character.audio_lose.volume = 0;
+    // world.throwableobject.audio_throw.volume = 0;
   } 
   else {
     world.character.mute = false;
+    world.character.audio_background.volume = 1;
     world.character.audio_snore.volume = 1;
+    world.character.audio_walking.volume = 1;
+    world.character.audio_jump.volume = 1;
+    world.character.audio_lose.volume = 1;
+    // world.throwableobject.audio_throw.volume = 1;
   } 
 }
 
