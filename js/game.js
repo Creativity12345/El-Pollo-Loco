@@ -177,11 +177,11 @@ function bindTouchBtns() {
 
   document.getElementById('btn-throw').addEventListener('touchstart', (e) => {
     e.preventDefault();
-    keyboard.d = true;
+    keyboard.D = true;
   });
 
   document.getElementById('btn-throw').addEventListener('touchend', (e) => {
     e.preventDefault();
-    keyboard.d = false;
+    keyboard.D = false;
   });
 }
