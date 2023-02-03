@@ -60,20 +60,18 @@
         <!-- HUD Mobile -->
         <div id="hud">
             <div class="upperPanel">
-                <!-- <button id="btn-mute" class="mobileBtns">
-                    <img id="muteImg" src="./img/icons/mute-2.png" alt="" onclick="mute()" />
-                </button> -->
+                <div class="upperPanelWrapper">
+                    <button id="btn-mute" class="mobileBtns">
+                        <img id="muteImg" src="./img/mute.png" alt="" onclick="mute()" />
+                    </button>
 
-                <!-- <button id="btn-controls" class="mobileBtns">
-                    <img src="./img/icons/controls-beige.png" alt="" onclick="openControls()" />
-                </button> -->
-
-                <button id="btn-muteBg" class="mobileBtns">
-                    <img id="muteBtnImg" src="./img/mute.png" alt="" onclick="bgMusic()" />
-                </button>
+                    <button id="btn-muteBg" class="mobileBtns">
+                        <img id="muteBtnImg" src="./img/mutebg.png" alt="" onclick="bgMusic()" />
+                    </button>
+                </div>
             </div>
             <div id="downPanel" class="panel">
-                <div class="panelWrapper">
+                <div class="downPanelWrapper">
                     <button id="btn-left" class="mobileBtns">
                         <img src="./img/arrowLeft.png" alt="" />
                     </button>
@@ -81,7 +79,7 @@
                         <img src="./img/arrowRight.png" alt="" />
                     </button>
                 </div>
-                <div class="panelWrapper">
+                <div class="downPanelWrapper">
                     <button id="btn-jump" class="mobileBtns">
                         <img src="./img/arrowUp.png" alt="" />
                     </button>
@@ -91,14 +89,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- Rotate Device Overlay -->
-        <!-- <div id="bg-rotate-device"> 
-            <span id="rotate-device-text" class="d-none">Rotate Device</span>
-        </div> -->
     </div>
 
-        <h2 id="instruction">Bewegen = Pfeiltasten ⬅︎ ➡︎ | Springen = Space / ⬆︎ | Werfen = D</h2>
+    <h2 id="instruction">Bewegen = Pfeiltasten ⬅︎ ➡︎ | Springen = Space / ⬆︎ | Werfen = D</h2>
 
 </body>
 

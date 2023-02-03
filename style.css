@@ -31,6 +31,7 @@ body {
 #startScreenContainer {
     position: absolute;
     top: 0;
+    z-index: 3;
 }
 
 #startScreenImg {
@@ -170,7 +171,15 @@ canvas {
     right: 10px;
 }
 
-.upperPanel:hover{
+.upperPanelWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.mobileBtns:hover{
     scale: 1.2;
     cursor: pointer;
 }
@@ -234,7 +243,7 @@ canvas {
     #startScreenContainer {
         width: 100%;
         height: 100vh;
-        z-index: 1;
+        z-index: 3;
     }
 
     #startScreenImg {
@@ -278,7 +287,11 @@ canvas {
         scale: 1;
     }
 
-    .panelWrapper{
+    .mobileBtns:hover{
+        scale: 1;
+    }
+
+    .downPanelWrapper{
         display: flex;
         justify-content: center;
         align-items: center;
