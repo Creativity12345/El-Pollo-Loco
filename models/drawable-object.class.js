@@ -8,15 +8,20 @@ class DrawableObject {
     currentImage = 0;
 
 
-    // loadImage ('img/test.png');
+    /**
+    * loadImage - loads a single image into the object
+    * @memberof DrawableObject
+    * @param {string} path - path to the image
+    */
     loadImage(path) {
         this.img = new Image(); // ist das selbe wie: this.img = document.getElementById('image') <img id='image' src=''>
         this.img.src = path;
     }
 
     /**
-    *       
-    * @param {Array} arr - ['img/image1.png', 'img/image2.png', ...]
+    * loadImages - loads multiple images into the object
+    * @memberof DrawableObject
+    * @param {Array} arr - array of image paths ['img/image1.png', 'img/image2.png', ...]
     */
     loadImages(arr) {
         arr.forEach((path) => {
@@ -26,10 +31,20 @@ class DrawableObject {
         });
     }
 
+    /**
+    * draw - draws the object onto a canvas
+    * @memberof DrawableObject
+    * @param {CanvasRenderingContext2D} ctx - 2D rendering context of the canvas
+    */
     draw(ctx) {
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
+    /**
+    * drawFrame - draws a blue frame around the object if conditions are met
+    * @memberof DrawableObject
+    * @param {CanvasRenderingContext2D} ctx - 2D rendering context of the canvas
+    */
     drawFrame(ctx) {
       if (this.canDrawFrame()) {
         ctx.beginPath();
@@ -40,6 +55,11 @@ class DrawableObject {
       }
     }
   
+    /**
+    * canDrawFrame - checks if the conditions are met to draw a frame
+    * @memberof DrawableObject
+    * @returns {boolean} - true if conditions are met, false otherwise
+    */
     canDrawFrame() {
      return this instanceof Character ||
       this instanceof Chicken ||
