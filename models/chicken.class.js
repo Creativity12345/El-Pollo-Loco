@@ -42,6 +42,9 @@ class Chicken extends MovableObject {
       }, 100);
     }
 
+    /**
+    * Checks if the enemys energy has reached 0 and plays the dying animation.
+    */
     checkIsDead() {
       if (this.energy == 0) {
           this.speed = 0;

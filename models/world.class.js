@@ -17,6 +17,7 @@ class World {
   collectedCoinsStorage = [];
 
   audio_hittedBoss = new Audio('audio/hittedBoss.mp3');
+  audio_hitted = new Audio('audio/chickenHitted.mp3');
 
   constructor(canvas, keyboard, clearIntervals, gameOver) {
     this.ctx = canvas.getContext('2d');
@@ -43,15 +44,17 @@ class World {
   run() {
     setStoppableInterval(() => {
       this.checkThrow();
-    }, 150);
+    }, 100);
     setStoppableInterval(() => {
       this.endboss.checkCondition();
       this.chicken.checkIsDead();
     }, 150);
     setStoppableInterval(() => {
-      this.checkEndbossKilled();
       this.checkEnemyKilled();
     }, 1000 / 60);
+    setStoppableInterval(() => {
+      this.checkEndbossKilled();
+    }, 600);
     setStoppableInterval(() => {
       this.checkOnTopOfEnemy();
       this.checkCollisions();
@@ -224,7 +227,7 @@ class World {
         if (enemy.isCollidingCollectables(tO)) {
           enemy.energy = 0;
           enemy.hitted = true;
-          let hittedsound = this.audio_hittedBoss;
+          let hittedsound = this.audio_hitted;
           if (!this.character.mute) hittedsound.play();
           enemy.energy = 0;
         }
