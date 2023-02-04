@@ -99,11 +99,7 @@ class Character extends MovableObject {
 
 
     /**
-    * animate method
-    * 
-    * Sets up interval methods for the character's movement, animations, and audio, 
-    * including walking, jumping, and idling. 
-    * 
+    * Sets up interval methods for the character's movement, animations, and audio, including walking, jumping, and idling. 
     */
     animate() {
         setInterval(() => {
@@ -143,11 +139,7 @@ class Character extends MovableObject {
     }
 
     /**
-    * playCharacterAnimations method
-    * 
-    * Plays the appropriate animations for the character depending on their state
-    * (dead, hurt, jumping, or walking)
-    * 
+    * Plays the appropriate animations for the character depending on their state (dead, hurt, jumping, or walking) 
     */
     playCharacterAnimations() {
       if (this.idle) this.playAnimation(this.IMAGES_IDLE);
@@ -160,10 +152,7 @@ class Character extends MovableObject {
     }
 
     /**
-    * jump method
-    * 
     * Makes the character jump by setting its speed in the Y direction
-    * 
     */
     jump() {
         this.speedY = 20;

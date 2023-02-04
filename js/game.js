@@ -1,17 +1,15 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let intervalIds = []; // hier drin werden alle intervalle gespeichert
+let intervalIds = [];
 let gameOver = false;
 let stopGameVariable = function stopGame() {
-  // Variable um es in die world.js im constructor zu übergeben
   intervalIds.forEach(clearInterval);
 };
 
 
 /**
- * @function init
- * @description Initializes the game by initializing level 1, binding touch buttons, removing classes and setting up the world.
+ * Initializes the game by initializing level 1, binding touch buttons, removing classes and setting up the world.
  */
 function init() {
     initLevel1();
@@ -25,8 +23,7 @@ function init() {
 
 
 /**
- * @function stopGame
- * @description Stops the game by clearing all intervals.
+ * Stops the game by clearing all intervals.
  */
 function stopGame() {
   intervalIds.forEach(clearInterval);
@@ -34,10 +31,9 @@ function stopGame() {
 
 
 /**
- * @function setStoppableInterval
  * @param {function} fn - The function to be executed repeatedly.
  * @param {number} time - The time interval between each execution in milliseconds.
- * @description Sets an interval that can be stopped later.
+ * Sets an interval that can be stopped later.
  */
 function setStoppableInterval(fn, time) {
   let id = setInterval(fn, time);
@@ -46,8 +42,7 @@ function setStoppableInterval(fn, time) {
 
 
 /**
- * @event window.onkeydown
- * @description Event handler to set the keyboard keys when they are pressed.
+ * Event handler to set the keyboard keys when they are pressed.
  */
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 39) {
@@ -77,8 +72,7 @@ window.addEventListener("keydown", (e) => {
 
 
 /**
- * @event window.onkeyup
- * @description Event handler to unset the keyboard keys when they are released.
+ * Event handler to unset the keyboard keys when they are released.
  */
 window.addEventListener("keyup", (e) => {
     if (e.keyCode == 39) {
@@ -109,8 +103,7 @@ window.addEventListener("keyup", (e) => {
 
 /**
  * Enters the fullscreen mode.
- * Adds 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class to respective elements
- * and removes 'd-none' class from 'exitFullscreenBtn' element and adds to 'enterFullscreenBtn' and 'title' and 'instruction' elements.
+ * Adds 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class to respective elements and removes 'd-none' class from 'exitFullscreenBtn' element and adds to 'enterFullscreenBtn' and 'title' and 'instruction' elements.
  * If element supports requestFullscreen, fullscreen is requested.
  * Also supports msRequestFullscreen (for IE11) and webkitRequestFullscreen (for iOS Safari).
  */
@@ -137,8 +130,7 @@ function enterFullscreen() {
 
 /**
  * Exits the fullscreen mode.
- * Removes 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class from respective elements
- * and adds 'd-none' class to 'enterFullscreenBtn' element and removes from 'exitFullscreenBtn' and 'title' and 'instruction' elements.
+ * Removes 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class from respective elements and adds 'd-none' class to 'enterFullscreenBtn' element and removes from 'exitFullscreenBtn' and 'title' and 'instruction' elements.
  * If document supports exitFullscreen, it is executed.
  * Also supports webkitExitFullscreen.
  */

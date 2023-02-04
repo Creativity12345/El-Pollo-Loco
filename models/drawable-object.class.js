@@ -10,17 +10,15 @@ class DrawableObject {
 
     /**
     * loadImage - loads a single image into the object
-    * @memberof DrawableObject
     * @param {string} path - path to the image
     */
     loadImage(path) {
-        this.img = new Image(); // ist das selbe wie: this.img = document.getElementById('image') <img id='image' src=''>
+        this.img = new Image();
         this.img.src = path;
     }
 
     /**
     * loadImages - loads multiple images into the object
-    * @memberof DrawableObject
     * @param {Array} arr - array of image paths ['img/image1.png', 'img/image2.png', ...]
     */
     loadImages(arr) {
@@ -33,7 +31,6 @@ class DrawableObject {
 
     /**
     * draw - draws the object onto a canvas
-    * @memberof DrawableObject
     * @param {CanvasRenderingContext2D} ctx - 2D rendering context of the canvas
     */
     draw(ctx) {
@@ -42,7 +39,6 @@ class DrawableObject {
 
     /**
     * drawFrame - draws a blue frame around the object if conditions are met
-    * @memberof DrawableObject
     * @param {CanvasRenderingContext2D} ctx - 2D rendering context of the canvas
     */
     drawFrame(ctx) {
@@ -57,7 +53,6 @@ class DrawableObject {
   
     /**
     * canDrawFrame - checks if the conditions are met to draw a frame
-    * @memberof DrawableObject
     * @returns {boolean} - true if conditions are met, false otherwise
     */
     canDrawFrame() {

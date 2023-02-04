@@ -64,6 +64,9 @@ class Endboss extends MovableObject{
         this.loadImages(this.IMAGES_HURT);
     }
 
+    /**
+    * Checks the Endboss's condition and plays the appropriate animation.
+    */
     checkCondition() {
         if (this.energy == 100) this.playAnimation(this.IMAGES_ALERT);
         if (this.energy < 100 && !this.otherDirection) {
@@ -79,11 +82,17 @@ class Endboss extends MovableObject{
         this.checkIsDead();
     }
 
+    /**
+    * Plays the hurt animation and decreases the Endboss's energy.
+    */
     hitted() {
         this.playAnimation(this.IMAGES_HURT);
         this.energy -= 20;
     }
 
+    /**
+    * Checks if the Endboss's energy has reached 0 and plays the dying animation.
+    */
     checkIsDead() {
         if (this.energy == 0) {
             this.speed = 0;
@@ -94,12 +103,18 @@ class Endboss extends MovableObject{
         }
     }
 
+    /**
+    * Changes the Endboss's direction to the right.
+    */
     changeDirectionRight() {
         setTimeout(() => {
             this.otherDirection = true;
         }, 7500);
     }
 
+    /**
+    * Changes the Endboss's direction to the left.
+    */
     changeDirectionLeft() {
         setTimeout(() => {
             this.otherDirection = false;
