@@ -296,15 +296,6 @@ class World {
     }
 
     /**
-    * Makes the endboss attack if the character's x position is greater than or equal to 2000
-    */
-    endbossAttacking() {
-      if (this.character.x >= 2000) {
-        this.endboss.attack();
-      }
-    }
-
-    /**
     * Stops the game and shows the end screen if either the character or endboss runs out of energy
     */
     stopGame() {
