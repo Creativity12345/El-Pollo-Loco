@@ -141,20 +141,6 @@ class MovableObject extends DrawableObject {
     }
 
     /**
-    * Check if the object is on top of another movable object.
-    *
-    * @param {MovableObject} mo The other movable object.
-    * @returns {boolean} Whether the object is on top of the other object.
-    */
-    isOnTop(mo) {
-      return (
-        this.y + this.height &&
-        this.x + this.width >= mo.y + mo.height &&
-        mo.x + mo.width
-      );
-    }
-
-    /**
     * Show the game over screen.
     */
     gameOver() {
