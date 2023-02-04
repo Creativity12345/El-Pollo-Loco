@@ -169,10 +169,7 @@ class World {
     checkOnTopOfEnemy() {
       for (let i = 0; i < this.level.enemies.length; i++) {
         const enemy = this.level.enemies[i];
-        if (
-          this.character.isCollidingChicken(enemy) &&
-          this.character.isAboveGround()
-        ) {
+        if (this.character.isCollidingChicken(enemy) && this.character.isAboveGround()) {
           let hittedChicken = this.level.enemies.indexOf(enemy);
           if (!this.level.enemies[hittedChicken].hitted && !this.character.mute)
             this.level.enemies[hittedChicken].audio_hitted.play();
@@ -268,7 +265,7 @@ class World {
             this.flipImage(mo);
         }
         mo.draw(this.ctx);
-        // mo.drawFrame(this.ctx); //show the frame arround the objects
+        mo.drawFrame(this.ctx); //show the frame arround the objects
 
         if (mo.otherDirection) {
             this.flipImageBack(mo); 

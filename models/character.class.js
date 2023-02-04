@@ -12,6 +12,10 @@ class Character extends MovableObject {
     y = 230;
     height = 200;
     speed = 10;
+    offsetLeft = 20;
+    offsetRight = 50;
+    offsetTop = 90;
+    offsetBottom = 100;
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -80,10 +84,6 @@ class Character extends MovableObject {
     audio_hurt = new Audio('audio/hurt.mp3');
     audio_background = new Audio('audio/backgroundMusic.mp3');
     audio_lose = new Audio('audio/lose.mp3');
-    offsetLeft = 20;
-    offsetRight = 50;
-    offsetTop = 90;
-    offsetBottom = 100;
 
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
