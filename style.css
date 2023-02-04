@@ -1,7 +1,16 @@
+/* fontdiner-swanky-regular - latin */
 @font-face {
-    font-family: 'zabars';
-    src: url('fonts/zabars.ttf') format('truetype');
-}
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Fontdiner Swanky';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/fontdiner-swanky-v19-latin/fontdiner-swanky-v19-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('./fonts/fontdiner-swanky-v19-latin/fontdiner-swanky-v19-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/fontdiner-swanky-v19-latin/fontdiner-swanky-v19-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/fontdiner-swanky-v19-latin/fontdiner-swanky-v19-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/fontdiner-swanky-v19-latin/fontdiner-swanky-v19-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/fontdiner-swanky-v19-latin/fontdiner-swanky-v19-latin-regular.svg#FontdinerSwanky') format('svg'); /* Legacy iOS */
+  }
 
 .d-none {
     display: none !important;
@@ -14,7 +23,7 @@ body {
     flex-direction: column;
     background-image: url(img/background.png);
     background-position: center;
-    font-family: 'zabars', Arial, Helvetica, sans-serif;
+    font-family: 'Fontdiner Swanky';
     margin: 0;
     height: 100vh;
     width: 100%;
@@ -161,17 +170,17 @@ canvas {
     width: 100%;
 }
 
-.panel{
+.panel {
     display: none;
 }
 
-.upperPanel{
+.upperPanel {
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
-.upperPanelWrapper{
+.upperPanelWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,7 +188,7 @@ canvas {
     gap: 15px;
 }
 
-.mobileBtns:hover{
+.mobileBtns:hover {
     scale: 1.2;
     cursor: pointer;
 }
@@ -269,8 +278,8 @@ canvas {
     #hud {
         display: block;
     }
-    
-    .panel{
+
+    .panel {
         display: block;
         display: flex;
         justify-content: space-around;
@@ -279,19 +288,19 @@ canvas {
         height: 100vh;
     }
 
-    .upperPanel{
+    .upperPanel {
         z-index: 2;
     }
 
-    .upperPanel:hover{
+    .upperPanel:hover {
         scale: 1;
     }
 
-    .mobileBtns:hover{
+    .mobileBtns:hover {
         scale: 1;
     }
 
-    .downPanelWrapper{
+    .downPanelWrapper {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -300,7 +309,7 @@ canvas {
         margin-bottom: 6px;
     }
 
-    .fullscreenBtn{
+    .fullscreenBtn {
         display: none;
     }
 }
