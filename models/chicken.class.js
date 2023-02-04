@@ -1,4 +1,5 @@
 class Chicken extends MovableObject {
+    energy = 20;
     height = 70;
     width = 70;
     y = 355;
@@ -39,5 +40,15 @@ class Chicken extends MovableObject {
           this.speed = 0;
         }
       }, 100);
+    }
+
+    checkIsDead() {
+      if (this.energy == 0) {
+          this.speed = 0;
+          this.playAnimation(this.IMAGE_DEAD);
+      if(!world.character.mute) {
+          this.audio_dying.play();
+      }
+      }
     }
   }
