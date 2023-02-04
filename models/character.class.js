@@ -152,13 +152,6 @@ class Character extends MovableObject {
     }
 
     /**
-    * Makes the character jump by setting its speed in the Y direction
-    */
-    jump() {
-        this.speedY = 20;
-    }
-
-    /**
     * The `checkIdleMode` function sets an interval that checks the time elapsed since the last interaction with the game.
     * If the time elapsed is greater than 3 seconds, it sets the `idle` property to `true`.
     * If the time elapsed is greater than 6 seconds, it sets the `idle` property to `false`, `longIdle` property to `true`, and plays the `audio_snore` and pauses the `audio_background`.
@@ -262,10 +255,11 @@ class Character extends MovableObject {
     }
   
     /**
+    * Makes the character jump by setting its speed in the Y direction
     * The `jump` function makes the character jump, deactivates the idle mode, and updates the `lastInteraction` time.
     */
     jump() {
-      super.jump();
+      this.speedY = 20;
       this.deactivateIdleMode();
       this.lastInteraction = new Date().getTime();
     }

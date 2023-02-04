@@ -173,7 +173,7 @@ class World {
           let hittedChicken = this.level.enemies.indexOf(enemy);
           if (!this.level.enemies[hittedChicken].hitted && !this.character.mute)
             this.level.enemies[hittedChicken].audio_hitted.play();
-          this.level.enemies[hittedChicken].hitted = true;
+            this.level.enemies[hittedChicken].hitted = true;
         }
       }
     }
