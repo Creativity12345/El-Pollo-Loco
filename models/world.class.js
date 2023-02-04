@@ -67,7 +67,7 @@ class World {
     checkBackgroundMusic() {
         if (this.bgMusicWanted()) {
           this.character.audio_background.play();
-          this.character.audio_background.volume = 0.25;
+          this.character.audio_background.volume = 0.05;
         } else this.character.audio_background.pause();
     }
 
