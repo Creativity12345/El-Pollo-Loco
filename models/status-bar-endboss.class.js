@@ -1,12 +1,12 @@
 class StatusBarEndboss extends DrawableObject {
     percentage = 100;
     ENDBOSS_IMAGES = [
-        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/0.png', //Bild 0
-        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/20.png', //Bild 1
-        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/40.png', //Bild 2
-        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/60.png', //Bild 3
-        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/80.png', //Bild 4
-        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/100.png', //Bild 5
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/0.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/20.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/40.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/60.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/80.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/100.png',
     ];
 
 
@@ -20,12 +20,20 @@ class StatusBarEndboss extends DrawableObject {
         this.setPercentage(100);
     }
 
+    /**
+    * Sets the percentage of the end boss's health.
+    * @param {number} percentage - The new percentage of the end boss's health.
+    */
     setPercentage(percentage) {
-        this.percentage = percentage; // => Bild 0 bis Bild 5
+        this.percentage = percentage;
         let path = this.ENDBOSS_IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
+    /**
+    * Resolves the index of the image for the end boss's health status bar.
+    * @returns {number} - The index of the image for the end boss's health status bar.
+    */
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;

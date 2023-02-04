@@ -20,6 +20,9 @@ class smallChicken extends MovableObject {
       this.speed = 1 + Math.random() * 1.5;
     }
   
+    /**
+    * animate the small chickens
+    */
     animate() {
       setInterval(() => {
         this.playAnimation(this.IMAGES_WALKING);

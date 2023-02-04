@@ -1,12 +1,12 @@
 class StatusBarCoins extends DrawableObject {
     percentage = 100;
     COINS_IMAGES = [
-        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png', //Bild 0
-        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png', //Bild 1
-        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/40.png', //Bild 2
-        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/60.png', //Bild 3
-        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/80.png', //Bild 4
-        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/100.png', //Bild 5
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/40.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/60.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/80.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/100.png',
     ];
 
 
@@ -20,12 +20,20 @@ class StatusBarCoins extends DrawableObject {
         this.setPercentage(0);
     }
 
+    /**
+    * Set the percentage of coins
+    * @param {number} percentage - The percentage of coins
+    */
     setPercentage(percentage) {
-        this.percentage = percentage; // => Bild 0 bis Bild 5
+        this.percentage = percentage;
         let path = this.COINS_IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
+    /**
+    * Resolves the image index based on the percentage of coins
+    * @return {number} - The image index
+    */
     resolveImageIndex() {
         if (this.percentage >= 10) return 5;
         else if (this.percentage > 8) return 4;
