@@ -50,10 +50,10 @@ class World {
           this.checkEndbossKilled();
         }, 600);
         setStoppableInterval(() => {
+          this.checkOnTopOfEnemy();
           this.checkCollisions();
           this.checkCollectingCoins();
           this.checkCollectingBottles();
-          this.checkOnTopOfEnemy();
           this.checkBonusHP(); // collect yellow chicken
           this.checkBackgroundMusic();
           this.character.checkIdleMode();

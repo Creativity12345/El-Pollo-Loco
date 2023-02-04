@@ -1,7 +1,6 @@
 class MovableObject extends DrawableObject {
     speed = 0.3;
     otherDirection = false;
-    speedY = 0;
     acceleration = 2;
     energy = 100;
     lastHit = 0;
@@ -131,13 +130,6 @@ class MovableObject extends DrawableObject {
     */
     moveLeft() {
         this.x -= this.speed;
-    }
-
-    /**
-    * Apply a jump to the object, setting its speedY to 20.
-    */
-    jump() {
-        this.speedY = 20;
     }
 
     /**
