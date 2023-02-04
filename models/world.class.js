@@ -106,7 +106,7 @@ class World {
   */
   characterCanCollide(enemy) {
     return (
-      this.character.isCollidingChicken(enemy) &&
+      this.character.isColliding(enemy) &&
       !enemy.hitted &&
       this.characterCanBeHurt()
     );
@@ -129,7 +129,7 @@ class World {
   checkBonusHP() {
     for (let i = 0; i < this.level.smallChicken.length; i++) {
       const chicken = this.level.smallChicken[i];
-      if (this.character.isCollidingChicken(chicken)) {
+      if (this.character.isColliding(chicken)) {
         let collectedChicken = this.level.smallChicken.indexOf(chicken);
         if (!this.character.mute) this.character.audio_bonusHP.play();
         this.level.smallChicken.splice(collectedChicken, 1);
@@ -145,7 +145,7 @@ class World {
   */
   checkCollectingBottles() {
     this.level.bottles.forEach((bottle) => {
-      if (this.character.isCollidingCollectables(bottle)) {
+      if (this.character.isColliding(bottle)) {
         if (!this.character.mute) this.character.audio_collectBottle.play();
         this.character.collectedBottles++;
         this.statusBarBottle.setPercentage(this.character.collectedBottles);
@@ -159,7 +159,7 @@ class World {
   */
   checkCollectingCoins() {
     this.level.coins.forEach((coin) => {
-      if (this.character.isCollidingCollectables(coin)) {
+      if (this.character.isColliding(coin)) {
         if (!this.character.mute) this.character.audio_collectCoin.play();
         this.character.collectedCoins++;
         this.collectedCoinsStorage.push(coin);
@@ -175,7 +175,7 @@ class World {
   checkOnTopOfEnemy() {
     for (let i = 0; i < this.level.enemies.length; i++) {
       const enemy = this.level.enemies[i];
-      if (this.character.isCollidingChicken(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
+      if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
         let hittedChicken = this.level.enemies.indexOf(enemy);
         if (!this.level.enemies[hittedChicken].hitted && !this.character.mute)
           this.level.enemies[hittedChicken].audio_hitted.play();
@@ -204,12 +204,12 @@ class World {
   */
   checkEndbossKilled() {
     this.throwableObjects.forEach((tO) => {
-      if (this.endboss.isCollidingCollectables(tO)) {
+      if (this.endboss.isColliding(tO)) {
         let hittedsound = this.audio_hittedBoss;
         if (!this.character.mute) hittedsound.play();
         this.endboss.hitted();
         this.statusBarEndboss.setPercentage(this.endboss.energy);
-      } else if (this.endboss.isCollidingCollectables(this.character)) {
+      } else if (this.endboss.isColliding(this.character)) {
         this.character.hit();
         let hurtsound = this.character.audio_hurt;
         if (!this.character.mute) hurtsound.play();
@@ -224,7 +224,7 @@ class World {
   checkEnemyKilled() {
     this.level.enemies.forEach((enemy) => {
       this.throwableObjects.forEach((tO) => {
-        if (enemy.isCollidingCollectables(tO)) {
+        if (enemy.isColliding(tO)) {
           enemy.energy = 0;
           enemy.hitted = true;
           let hittedsound = this.audio_hitted;

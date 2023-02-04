@@ -49,32 +49,6 @@ class MovableObject extends DrawableObject {
     }
 
     /**
-    * Check if the object is colliding with a chicken object.
-    *
-    * @param {MovableObject} mo The chicken object.
-    * @returns {boolean} Whether the object is colliding with the chicken.
-    */
-    isCollidingChicken(mo) {
-        return this.x + this.width - (this.offsetRight - this.offsetLeft) > mo.x + mo.offsetLeft &&
-        this.y + this.height - (this.offsetBottom - this.offsetTop) > mo.y + mo.offsetTop &&
-        this.x + this.offsetLeft < mo.x + mo.width - (mo.offsetRight - mo.offsetLeft) &&
-        this.y + this.offsetTop < mo.y + mo.height - (mo.offsetBottom - mo.offsetTop);
-    }
-
-    /**
-    * Check if the object is colliding with a collectable object.
-    *
-    * @param {MovableObject} mo The collectable object.
-    * @returns {boolean} Whether the object is colliding with the collectable.
-    */
-    isCollidingCollectables(mo) {
-        return this.x + this.width - (this.offsetRight - this.offsetLeft) > mo.x + mo.offsetLeft &&
-        this.y + this.height - (this.offsetBottom - this.offsetTop) > mo.y + mo.offsetTop &&
-        this.x + this.offsetLeft < mo.x + mo.width - (mo.offsetRight - mo.offsetLeft) &&
-        this.y + this.offsetTop < mo.y + mo.height - (mo.offsetBottom - mo.offsetTop);
-    }
-
-    /**
     * Apply a hit to the object, reducing its energy by 20.
     */
     hit() {
