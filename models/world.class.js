@@ -42,7 +42,7 @@ class World {
     run() {
         setStoppableInterval(() => {
           this.checkThrow();
-        }, 250);
+        }, 150);
         setStoppableInterval(() => {
           this.endboss.checkCondition();
         }, 150);
