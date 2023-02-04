@@ -29,6 +29,9 @@ class ThrowableObject extends MovableObject {
       this.throw();
     }
   
+    /**
+    * Animate the throwable object
+    */
     animate() {
       let bottleSmashed = false;
       setStoppableInterval(() => {
@@ -46,6 +49,9 @@ class ThrowableObject extends MovableObject {
       }, 100);
     }
   
+    /**
+    * Throw the object
+    */
     throw() {
       this.speedY = 20;
       this.applyGravity();

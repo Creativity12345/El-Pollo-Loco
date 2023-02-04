@@ -29,10 +29,16 @@ class World {
         this.run();
     }
 
+    /**
+    * Sets the world object for the character object
+    */
     setWorld() {
         this.character.world = this;
     }
 
+    /**
+    * Runs the intervals for the world
+    */
     run() {
         setStoppableInterval(() => {
           this.checkThrow();
@@ -55,6 +61,9 @@ class World {
         }, 50);
     }
 
+    /**
+    * Plays or pauses the background music based on certain conditions
+    */
     checkBackgroundMusic() {
         if (this.bgMusicWanted()) {
           this.character.audio_background.play();
@@ -62,10 +71,17 @@ class World {
         } else this.character.audio_background.pause();
     }
 
+    /**
+    * Returns whether background music should be played or not
+    * @returns {Boolean}
+    */
     bgMusicWanted() {
       return gameOver === false && !this.character.mute && !this.character.muteBg;
     }
 
+    /**
+    * Checks if the character is colliding with any enemies
+    */
     checkCollisions() {
       this.level.enemies.forEach((enemy) => {
         if (this.characterCanCollide(enemy)) {
@@ -77,6 +93,11 @@ class World {
       });
     }
 
+    /**
+    * Returns whether the character can collide with the given enemy object
+    * @param {Enemy} enemy - The enemy object to check collisions with
+    * @returns {Boolean}
+    */
     characterCanCollide(enemy) {
       return (
         this.character.isCollidingChicken(enemy) &&
@@ -85,6 +106,10 @@ class World {
       );
     }
 
+    /**
+    * Returns whether the character can be hurt or not
+    * @returns {Boolean}
+    */
     characterCanBeHurt() {
       return (
         !this.character.isAboveGround() &&
@@ -92,6 +117,9 @@ class World {
       );
     }
 
+    /**
+    * Checks if the character is collecting any yellow chickens (bonus HP)
+    */
     checkBonusHP() {
       for (let i = 0; i < this.level.smallChicken.length; i++) {
         const chicken = this.level.smallChicken[i];
@@ -106,6 +134,9 @@ class World {
       }
     }
 
+    /**
+    * Checks if the character is collecting any bottles
+    */
     checkCollectingBottles() {
       this.level.bottles.forEach((bottle) => {
         if (this.character.isCollidingCollectables(bottle)) {
@@ -117,6 +148,9 @@ class World {
       });
     }
   
+    /**
+    * Checks if the character is collecting any coins
+    */
     checkCollectingCoins() {
       this.level.coins.forEach((coin) => {
         if (this.character.isCollidingCollectables(coin)) {
@@ -129,6 +163,9 @@ class World {
       });
     }
 
+    /**
+    * Checks if the character is on top of an enemy.
+    */
     checkOnTopOfEnemy() {
       for (let i = 0; i < this.level.enemies.length; i++) {
         const enemy = this.level.enemies[i];
@@ -144,6 +181,9 @@ class World {
       }
     }
 
+    /**
+    * Checks if the character can throw a bottle.
+    */
     checkThrow() {
       if (this.keyboard.D && this.character.collectedBottles > 0) {
         let bottle = new ThrowableObject(
@@ -156,6 +196,9 @@ class World {
       }
     }
 
+    /**
+    * Checks if the endboss was killed.
+    */
     checkEndbossKilled() {
       this.throwableObjects.forEach((tO) => {
         if (this.endboss.isCollidingCollectables(tO)) {
@@ -172,6 +215,9 @@ class World {
       });
     }
 
+    /**
+    * Draws the game world on the canvas.
+    */
     draw() {
       this.ctx.clearRect(0, 0, canvas.width, canvas.height);
       this.ctx.translate(this.camera_x, 0);
@@ -191,6 +237,9 @@ class World {
       }
     }
 
+    /**
+    * Adds the statusbars for health, bottles, coins, and the endboss to the world
+    */
     addStatusbars() {
       this.addToMap(this.statusBarHealth);
       this.addToMap(this.statusBarBottle);
@@ -200,12 +249,20 @@ class World {
       }
     }
 
+    /**
+    * Adds objects to the map
+    * @param {Array} objects - The array of objects to add to the map
+    */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
         });
     }
 
+    /**
+    * Adds an object to the map
+    * @param {Object} mo - The object to add to the map
+    */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
@@ -218,6 +275,10 @@ class World {
         }
     }
 
+    /**
+    * Flips an image horizontally
+    * @param {Object} mo - The object whose image should be flipped
+    */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -225,17 +286,27 @@ class World {
         mo.x = mo.x * -1;
     }
 
+    /**
+    * Flips an image back to its original position
+    * @param {Object} mo - The object whose image should be flipped back
+    */
     flipImageBack(mo){
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
 
+    /**
+    * Makes the endboss attack if the character's x position is greater than or equal to 2000
+    */
     endbossAttacking() {
       if (this.character.x >= 2000) {
         this.endboss.attack();
       }
     }
 
+    /**
+    * Stops the game and shows the end screen if either the character or endboss runs out of energy
+    */
     stopGame() {
       if (this.character.energy == 0) {
         this.character.playAnimation(this.character.IMAGES_DEAD);
@@ -250,12 +321,18 @@ class World {
       }
     }
 
+    /**
+    * Shows the end screen and stops all intervals
+    */
     showEndscreen() {
       document.getElementById('endScreenContainer').classList.remove('d-none');
       this.clearIntervals();
       this.character.audio_background.pause();
     }
 
+    /**
+    * Adds all objects to the map
+    */
     addAllObjects() {
       this.addObjectsToMap(this.level.clouds);
       this.addObjectsToMap(this.level.enemies);
