@@ -60,6 +60,7 @@ class DrawableObject {
       this instanceof Chicken ||
       this instanceof CollectableObject ||
       this instanceof CollectableBottle ||
+      this instanceof ThrowableObject ||
       this instanceof smallChicken ||
       this instanceof Endboss
     }
