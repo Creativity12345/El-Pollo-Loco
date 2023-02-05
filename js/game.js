@@ -19,6 +19,8 @@ function init() {
     removeClasses();
     document.getElementById('startScreenContainer').classList.add('d-none');
     document.getElementById('endScreenContainer').classList.add('d-none');
+    document.getElementById('muteImg').src = './img/unmuted.png';
+    document.getElementById('muteBgImg').src = './img/unmutedBg.png';
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard, stopGameVariable, gameOver);
 }
