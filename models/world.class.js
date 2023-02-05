@@ -177,7 +177,7 @@ class World {
       const enemy = this.level.enemies[i];
       if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
         let hittedChicken = this.level.enemies.indexOf(enemy);
-        if (!this.level.enemies[hittedChicken].hitted && !this.character.mute)
+        if (!this.level.enemies[hittedChicken].hitted && !this.character.muteSounds)
           this.level.enemies[hittedChicken].audio_hitted.play();
         this.level.enemies[hittedChicken].hitted = true;
       }
@@ -206,13 +206,13 @@ class World {
     this.throwableObjects.forEach((tO) => {
       if (this.endboss.isColliding(tO)) {
         let hittedsound = this.audio_hittedBoss;
-        if (!this.character.mute) hittedsound.play();
+        if (!this.character.muteSounds) hittedsound.play();
         this.endboss.hitted();
         this.statusBarEndboss.setPercentage(this.endboss.energy);
       } else if (this.endboss.isColliding(this.character)) {
         this.character.hit();
         let hurtsound = this.character.audio_hurt;
-        if (!this.character.mute) hurtsound.play();
+        if (!this.character.muteSounds) hurtsound.play();
         this.statusBarHealth.setPercentage(this.character.energy);
       }
     });
@@ -228,7 +228,7 @@ class World {
           enemy.energy = 0;
           enemy.hitted = true;
           let hittedsound = this.audio_hitted;
-          if (!this.character.mute) hittedsound.play();
+          if (!this.character.muteSounds) hittedsound.play();
           enemy.energy = 0;
         }
       })

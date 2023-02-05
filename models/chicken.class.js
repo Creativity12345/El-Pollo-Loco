@@ -49,7 +49,7 @@ class Chicken extends MovableObject {
       if (this.energy == 0) {
           this.speed = 0;
           this.playAnimation(this.IMAGE_DEAD);
-      if(!world.character.mute) {
+      if(!world.character.muteSounds) {
           this.audio_dying.play();
       }
       }

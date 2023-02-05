@@ -5,7 +5,7 @@ class Character extends MovableObject {
     boostHP = false;
     doAnimation = true;
     lastInteraction = 0;
-    mute = false;
+    muteSounds = false;
     muteBg = false;
     idle = false;
     longIdle = false;

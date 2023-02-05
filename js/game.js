@@ -175,12 +175,15 @@ function mute() {
   muteState = !muteState;
   imgElement.src = muteState ? img2 : img1;
 
-  world.character.mute = muteState;
+  world.character.muteSounds = muteState;
 
-    world.character.audio_snore.volume = muteState ? 0 : 1;
-    world.character.audio_walking.volume = muteState ? 0 : 1;
-    world.character.audio_jump.volume = muteState ? 0 : 1;
-    world.character.audio_lose.volume = muteState ? 0 : 1;
+  world.character.audio_walking.volume = muteState ? 0 : 1;
+  world.character.audio_snore.volume = muteState ? 0 : 1;
+  world.character.audio_collectCoin.volume = muteState ? 0 : 1;
+  world.character.audio_jump.volume = muteState ? 0 : 1;
+  world.character.audio_collectBottle.volume = muteState ? 0 : 1;
+  world.character.audio_bonusHP.volume = muteState ? 0 : 1;
+  world.character.audio_hurt.volume = muteState ? 0 : 1;
 }
 
 
@@ -200,6 +203,7 @@ function bgMusic() {
   world.character.muteBg = muteStateBg;
     
   world.character.audio_background.volume = muteStateBg ? 0 : 1;
+  world.character.audio_lose.volume = muteStateBg ? 0 : 1;
 }
 
 
