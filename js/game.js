@@ -6,6 +6,8 @@ let gameOver = false;
 let stopGameVariable = function stopGame() {
   intervalIds.forEach(clearInterval);
 };
+let muteState = false;
+let muteStateBg = false;
 
 
 /**
@@ -162,26 +164,42 @@ function removeClasses() {
 
 /**
  * Mutes or unmutes the audio for world.character.
+ * Toggles the image of sound button.
  * Toggles the volume for audio_background, audio_snore, audio_walking, audio_jump and audio_lose between 0 and 1 based on world.character.mute value.
  */
 function mute() {
-    world.character.mute = !world.character.mute;
-    
-    world.character.audio_background.volume = world.character.mute ? 0 : 1;
-    world.character.audio_snore.volume = world.character.mute ? 0 : 1;
-    world.character.audio_walking.volume = world.character.mute ? 0 : 1;
-    world.character.audio_jump.volume = world.character.mute ? 0 : 1;
-    world.character.audio_lose.volume = world.character.mute ? 0 : 1;
+  let img1 = "./img/unmuted.png",
+      img2 = "./img/muted.png";
+  let imgElement = document.getElementById("muteImg");
+
+  muteState = !muteState;
+  imgElement.src = muteState ? img2 : img1;
+
+  world.character.mute = muteState;
+
+    world.character.audio_snore.volume = muteState ? 0 : 1;
+    world.character.audio_walking.volume = muteState ? 0 : 1;
+    world.character.audio_jump.volume = muteState ? 0 : 1;
+    world.character.audio_lose.volume = muteState ? 0 : 1;
 }
 
 
 /**
  * Mutes or unmutes background music.
+ * Toggles the image of background music button.
  * Toggles the value of world.character.muteBg.
  */
 function bgMusic() {
-  if (!world.character.muteBg) world.character.muteBg = true;
-  else world.character.muteBg = false;
+  let img1 = "./img/unmutedBg.png",
+      img2 = "./img/mutedBg.png";
+  let imgElement = document.getElementById("muteBgImg");
+
+  muteStateBg = !muteStateBg;
+  imgElement.src = muteStateBg ? img2 : img1;
+
+  world.character.muteBg = muteStateBg;
+    
+  world.character.audio_background.volume = muteStateBg ? 0 : 1;
 }
 
 
