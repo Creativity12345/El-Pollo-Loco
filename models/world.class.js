@@ -56,15 +56,22 @@ class World {
       this.checkEndbossKilled();
     }, 600);
     setStoppableInterval(() => {
-      this.checkOnTopOfEnemy();
-      this.checkCollisions();
-      this.checkCollectingCoins();
-      this.checkCollectingBottles();
-      this.checkBonusHP(); // collect yellow chicken
-      this.checkBackgroundMusic();
-      this.character.checkIdleMode();
-      this.stopGame();
+      this.checkSomeActivitiesOfGame();
     }, 50);
+  }
+
+  /**
+  * Checks for various activities in the game
+  */
+  checkSomeActivitiesOfGame() {
+    this.checkOnTopOfEnemy();
+    this.checkCollisions();
+    this.checkCollectingCoins();
+    this.checkCollectingBottles();
+    this.checkBonusHP(); // collect yellow chicken
+    this.checkBackgroundMusic();
+    this.character.checkIdleMode();
+    this.stopGame();
   }
 
   /**
