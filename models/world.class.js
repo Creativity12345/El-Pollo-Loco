@@ -197,8 +197,8 @@ class World {
   checkThrow() {
     if (this.keyboard.D && this.character.collectedBottles > 0) {
       let bottle = new ThrowableObject(
-        this.character.x + 100,
-        this.character.y + 100,
+        this.character.x + this.character.width + this.character.offsetLeft - this.character.offsetRight,
+        this.character.y + this.character.offsetTop,
       );
       this.throwableObjects.push(bottle);
       this.character.collectedBottles--;

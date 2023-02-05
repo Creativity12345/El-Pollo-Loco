@@ -25,8 +25,12 @@ class ThrowableObject extends MovableObject {
     super().loadImage('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
     this.loadImages(this.IMAGES_BOTTLEROTATION);
     this.loadImages(this.IMAGES_BOTTLESPLASH);
-    this.x = x;
-    this.y = y - 70;
+    if (world.character.otherDirection) {
+      this.x = x - world.character.width + world.character.offsetLeft - world.character.offsetRight + this.offsetRight;
+    } else {
+      this.x = x - this.offsetLeft;
+    }
+    this.y = y - this.height + this.offsetBottom;
     this.height = 80;
     this.width = 80;
     this.throw();
@@ -67,7 +71,11 @@ class ThrowableObject extends MovableObject {
     }
 
     setStoppableInterval(() => {
-      this.x += 20;
+      if (world.character.otherDirection) {
+        this.x -= 20;
+      } else {
+        this.x += 20;
+      }
     }, 50);
   }
 }
