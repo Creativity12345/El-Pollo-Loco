@@ -70,12 +70,14 @@ class ThrowableObject extends MovableObject {
       this.audio_throw.volume = 0;
     }
 
-    setStoppableInterval(() => {
-      if (world.character.otherDirection) {
+    if (world.character.otherDirection) {
+      setStoppableInterval(() => {
         this.x -= 20;
-      } else {
+      }, 50);
+    } else {
+      setStoppableInterval(() => {
         this.x += 20;
-      }
-    }, 50);
+      }, 50);
+    }
   }
 }
