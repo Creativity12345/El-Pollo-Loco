@@ -295,7 +295,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx); //show the frame arround the objects
+    // mo.drawFrame(this.ctx); //show the frame arround the objects
 
     if (mo.otherDirection) {
       this.flipImageBack(mo);
