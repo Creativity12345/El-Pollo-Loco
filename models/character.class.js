@@ -1,7 +1,7 @@
 class Character extends MovableObject {
   world;
   collectedCoins = 0;
-  collectedBottles = 100;
+  collectedBottles = 0;
   boostHP = false;
   doAnimation = true;
   lastInteraction = 0;
