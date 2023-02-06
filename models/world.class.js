@@ -44,7 +44,7 @@ class World {
   run() {
     setStoppableInterval(() => {
       this.checkThrow();
-    }, 300);
+    }, 200);
     setStoppableInterval(() => {
       this.endboss.checkCondition();
       this.chicken.checkIsDead();

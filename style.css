@@ -205,6 +205,10 @@ canvas {
     display: none;
 }
 
+.sorry {
+    display: none;
+}
+
 /* Smartphones */
 @media only screen and (max-width: 660px) {
     .rotate {
@@ -219,10 +223,11 @@ canvas {
         background-color: rgb(111, 110, 110);
     }
 
-    .rotateInfoBox{
+    .rotateInfoBox {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         height: 100%;
     }
 }
@@ -230,46 +235,116 @@ canvas {
 @media only screen and (max-width: 720px) {
     #content {
         width: 100%;
+        max-width: 720px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     canvas {
         width: 100%;
         height: 100%;
         border-radius: 0px;
+        max-width: 720px;
     }
 
     #startScreenContainer {
         width: 100%;
+        max-width: 720px;
     }
 
     #startScreenImg {
         border-radius: 0px;
         width: 100%;
+        max-width: 720px;
     }
 
     #endScreenContainer {
         width: 100%;
+        max-width: 720px;
     }
 
     #endScreenImg {
         width: 100%;
+        max-width: 720px;
     }
 }
 
 /* Smartphones */
-@media only screen and (max-height: 480px) {
-    body {
-        background-image: none;
+@media only screen and (max-width: 660px) and (max-height: 320px) {
+    .rotate {
+        display: none;
     }
 
-    #content {
+    .sorry {
+        display: block;
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+    }
+
+    .sorryInfoBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .sorryInfoBox img {
         width: 100%;
         height: 100vh;
+    }
+
+    .sorryInfoBox p {
+        position: absolute;
+        font-size: 20px;
+        color: white;
+    }
+}
+
+@media only screen and (max-height: 320px) {
+    .sorry {
+        display: block;
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+    }
+
+    .sorryInfoBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .sorryInfoBox img {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .sorryInfoBox p {
+        position: absolute;
+        font-size: 20px;
+        color: white;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    #content {
+        width: 100%;
+        max-width: 720px;
+        height: 100vh;
         box-shadow: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     canvas {
         width: 100%;
+        max-width: 720px;
         height: 100vh;
         border-radius: 0px;
         box-shadow: none;
@@ -344,6 +419,12 @@ canvas {
     }
 
     .fullscreenBtn {
+        display: none;
+    }
+}
+
+@media only screen and (max-height: 650px) {
+    h1 {
         display: none;
     }
 }
