@@ -210,7 +210,7 @@ canvas {
 }
 
 /* Smartphones */
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 660px) and (min-height: 660px) {
     .rotate {
         display: block;
         width: 100%;
