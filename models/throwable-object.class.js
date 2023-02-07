@@ -64,6 +64,14 @@ class ThrowableObject extends MovableObject {
     this.speedY = 20;
     this.applyGravity();
 
+    this.checkThrow();
+  }
+
+  /**
+  * Checks if a throw is executed and plays a sound if necessary.
+  * Then moves the character object in the appropriate direction.
+  */
+  checkThrow(){
     if (!world.character.muteSounds) {
       this.audio_throw.play();
     } else {
