@@ -14,15 +14,15 @@ let muteStateBg = false;
  * Initializes the game by initializing level 1, binding touch buttons, removing classes and setting up the world.
  */
 function init() {
-    initLevel1();
-    bindTouchBtns();
-    removeClasses();
-    document.getElementById('startScreenContainer').classList.add('d-none');
-    document.getElementById('endScreenContainer').classList.add('d-none');
-    document.getElementById('muteImg').src = './img/unmuted.png';
-    document.getElementById('muteBgImg').src = './img/unmutedBg.png';
-    canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard, stopGameVariable, gameOver);
+  initLevel1();
+  bindTouchBtns();
+  removeClasses();
+  document.getElementById('startScreenContainer').classList.add('d-none');
+  document.getElementById('endScreenContainer').classList.add('d-none');
+  document.getElementById('muteImg').src = './img/unmuted.png';
+  document.getElementById('muteBgImg').src = './img/unmutedBg.png';
+  canvas = document.getElementById('canvas');
+  world = new World(canvas, keyboard, stopGameVariable, gameOver);
 }
 
 
@@ -49,29 +49,33 @@ function setStoppableInterval(fn, time) {
  * Event handler to set the keyboard keys when they are pressed.
  */
 window.addEventListener("keydown", (e) => {
-    if (e.keyCode == 39) {
-        keyboard.RIGHT = true;
-    }
+  if (e.keyCode == 39) {
+    keyboard.RIGHT = true;
+  }
 
-    if (e.keyCode == 37) {
-        keyboard.LEFT = true;
-    }
+  if (e.keyCode == 37) {
+    keyboard.LEFT = true;
+  }
 
-    if (e.keyCode == 38) {
-        keyboard.UP = true;
-    }
+  if (e.keyCode == 38) {
+    keyboard.UP = true;
+  }
 
-    if (e.keyCode == 40) {
-        keyboard.DOWN = true;
-    }
+  if (e.keyCode == 40) {
+    keyboard.DOWN = true;
+  }
 
-    if (e.keyCode == 32) {
-        keyboard.SPACE = true;
-    }
+  if (e.keyCode == 32) {
+    keyboard.SPACE = true;
+  }
 
-    if (e.keyCode == 68) {
-        keyboard.D = true;
-    }
+  if (e.keyCode == 68) {
+    keyboard.D = true;
+  }
+
+  if (e.keyCode == 27) {
+    keyboard.ESC = true;
+  }
 });
 
 
@@ -79,29 +83,37 @@ window.addEventListener("keydown", (e) => {
  * Event handler to unset the keyboard keys when they are released.
  */
 window.addEventListener("keyup", (e) => {
-    if (e.keyCode == 39) {
-        keyboard.RIGHT = false;
-    }
+  if (e.keyCode == 39) {
+    keyboard.RIGHT = false;
+  }
 
-    if (e.keyCode == 37) {
-        keyboard.LEFT = false;
-    }
+  if (e.keyCode == 37) {
+    keyboard.LEFT = false;
+  }
 
-    if (e.keyCode == 38) {
-        keyboard.UP = false;
-    }
+  if (e.keyCode == 38) {
+    keyboard.UP = false;
+  }
 
-    if (e.keyCode == 40) {
-        keyboard.DOWN = false;
-    }
+  if (e.keyCode == 40) {
+    keyboard.DOWN = false;
+  }
 
-    if (e.keyCode == 32) {
-        keyboard.SPACE = false;
-    }
+  if (e.keyCode == 32) {
+    keyboard.SPACE = false;
+  }
 
-    if (e.keyCode == 68) {
-        keyboard.D = false;
+  if (e.keyCode == 68) {
+    keyboard.D = false;
+  }
+
+  if (e.keyCode == 27) {
+    keyboard.ESC = false;
+
+    if (document.exitFullscreen) {
+      toSmall();
     }
+  }
 });
 
 
@@ -112,23 +124,23 @@ window.addEventListener("keyup", (e) => {
  * Also supports msRequestFullscreen (for IE11) and webkitRequestFullscreen (for iOS Safari).
  */
 function enterFullscreen() {
-    document.getElementById('enterFullscreenBtn').classList.add('d-none');
-    document.getElementById('exitFullscreenBtn').classList.remove('d-none');
-    document.getElementById('startScreenImg').classList.add('startScreenImgFullscreen');
-    document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
-    document.getElementById('canvas').classList.add('canvasFullScreen');
-    document.getElementById('title').classList.add('d-none');
-    document.getElementById('instruction').classList.add('d-none');
+  document.getElementById('enterFullscreenBtn').classList.add('d-none');
+  document.getElementById('exitFullscreenBtn').classList.remove('d-none');
+  document.getElementById('startScreenImg').classList.add('startScreenImgFullscreen');
+  document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
+  document.getElementById('canvas').classList.add('canvasFullScreen');
+  document.getElementById('title').classList.add('d-none');
+  document.getElementById('instruction').classList.add('d-none');
 
-    let element = document.getElementById('content');
+  let element = document.getElementById('content');
 
-    if (element.requestFullscreen) {
-        element.requestFullscreen();
-    } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
-        element.msRequestFullscreen();
-    } else if (element.webkitRequestFullscreen) {  // iOS Safari
-        element.webkitRequestFullscreen();
-    }
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+    element.msRequestFullscreen();
+  } else if (element.webkitRequestFullscreen) {  // iOS Safari
+    element.webkitRequestFullscreen();
+  }
 }
 
 
@@ -139,19 +151,19 @@ function enterFullscreen() {
  * Also supports webkitExitFullscreen.
  */
 function toSmall() {
-    document.getElementById('enterFullscreenBtn').classList.remove('d-none');
-    document.getElementById('exitFullscreenBtn').classList.add('d-none');
-    document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
-    document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
-    document.getElementById('canvas').classList.remove('canvasFullScreen');
-    document.getElementById('title').classList.remove('d-none');
-    document.getElementById('instruction').classList.remove('d-none');
+  document.getElementById('enterFullscreenBtn').classList.remove('d-none');
+  document.getElementById('exitFullscreenBtn').classList.add('d-none');
+  document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
+  document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
+  document.getElementById('canvas').classList.remove('canvasFullScreen');
+  document.getElementById('title').classList.remove('d-none');
+  document.getElementById('instruction').classList.remove('d-none');
 
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-    }
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
 }
 
 
@@ -159,8 +171,8 @@ function toSmall() {
  * Adds 'd-none' class to 'startScreenContainer' and 'endScreenContainer' elements.
  */
 function removeClasses() {
-    document.getElementById('startScreenContainer').classList.add('d-none');
-    document.getElementById('endScreenContainer').classList.add('d-none');
+  document.getElementById('startScreenContainer').classList.add('d-none');
+  document.getElementById('endScreenContainer').classList.add('d-none');
 }
 
 
@@ -171,7 +183,7 @@ function removeClasses() {
  */
 function mute() {
   let img1 = "./img/unmuted.png",
-      img2 = "./img/muted.png";
+    img2 = "./img/muted.png";
   let imgElement = document.getElementById("muteImg");
 
   muteState = !muteState;
@@ -196,14 +208,14 @@ function mute() {
  */
 function bgMusic() {
   let img1 = "./img/unmutedBg.png",
-      img2 = "./img/mutedBg.png";
+    img2 = "./img/mutedBg.png";
   let imgElement = document.getElementById("muteBgImg");
 
   muteStateBg = !muteStateBg;
   imgElement.src = muteStateBg ? img2 : img1;
 
   world.character.muteBg = muteStateBg;
-    
+
   world.character.audio_background.volume = muteStateBg ? 0 : 1;
   world.character.audio_lose.volume = muteStateBg ? 0 : 1;
 }
