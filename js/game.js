@@ -111,48 +111,71 @@ window.addEventListener("keyup", (e) => {
 });
 
 
+/**
+ * Enters the fullscreen mode.
+ * Adds 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class to respective elements and removes 'd-none' class from 'exitFullscreenBtn' element and adds to 'enterFullscreenBtn' and 'title' and 'instruction' elements.
+ * If element supports requestFullscreen, fullscreen is requested.
+ * Also supports msRequestFullscreen (for IE11) and webkitRequestFullscreen (for iOS Safari).
+ */
+function enterFullscreen() {
+  document.getElementById('enterFullscreenBtn').classList.add('d-none');
+  document.getElementById('exitFullscreenBtn').classList.remove('d-none');
+  document.getElementById('startScreenImg').classList.add('startScreenImgFullscreen');
+  document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
+  document.getElementById('canvas').classList.add('canvasFullScreen');
+  document.getElementById('title').classList.add('d-none');
+  document.getElementById('instruction').classList.add('d-none');
+
+  let element = document.getElementById('content');
+
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+    element.msRequestFullscreen();
+  } else if (element.webkitRequestFullscreen) {  // iOS Safari
+    element.webkitRequestFullscreen();
+  }
+}
+
+
+/**
+ * Exits the fullscreen mode.
+ * Removes 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class from respective elements and adds 'd-none' class to 'enterFullscreenBtn' element and removes from 'exitFullscreenBtn' and 'title' and 'instruction' elements.
+ * If document supports exitFullscreen, it is executed.
+ * Also supports webkitExitFullscreen.
+ */
+function closeFullscreen() {
+  document.getElementById('enterFullscreenBtn').classList.remove('d-none');
+  document.getElementById('exitFullscreenBtn').classList.add('d-none');
+  document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
+  document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
+  document.getElementById('canvas').classList.remove('canvasFullScreen');
+  document.getElementById('title').classList.remove('d-none');
+  document.getElementById('instruction').classList.remove('d-none');
+
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
+}
+
+
 // /**
-//  * Enters the fullscreen mode.
-//  * Adds 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class to respective elements and removes 'd-none' class from 'exitFullscreenBtn' element and adds to 'enterFullscreenBtn' and 'title' and 'instruction' elements.
-//  * If element supports requestFullscreen, fullscreen is requested.
-//  * Also supports msRequestFullscreen (for IE11) and webkitRequestFullscreen (for iOS Safari).
+//  * Enters fullscreen mode for the given element.
+//  * @param {Element} element - The element to enter fullscreen mode for.
 //  */
-// function enterFullscreen() {
-//   document.getElementById('enterFullscreenBtn').classList.add('d-none');
-//   document.getElementById('exitFullscreenBtn').classList.remove('d-none');
-//   document.getElementById('startScreenImg').classList.add('startScreenImgFullscreen');
-//   document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
-//   document.getElementById('canvas').classList.add('canvasFullScreen');
-//   document.getElementById('title').classList.add('d-none');
-//   document.getElementById('instruction').classList.add('d-none');
-
-//   let element = document.getElementById('content');
-
+// function enterFullscreen(element) {
 //   if (element.requestFullscreen) {
 //     element.requestFullscreen();
-//   } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
-//     element.msRequestFullscreen();
-//   } else if (element.webkitRequestFullscreen) {  // iOS Safari
-//     element.webkitRequestFullscreen();
 //   }
 // }
 
 
 // /**
-//  * Exits the fullscreen mode.
-//  * Removes 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class from respective elements and adds 'd-none' class to 'enterFullscreenBtn' element and removes from 'exitFullscreenBtn' and 'title' and 'instruction' elements.
-//  * If document supports exitFullscreen, it is executed.
-//  * Also supports webkitExitFullscreen.
+//  * Exits fullscreen mode.
 //  */
-// function toSmall() {
-//   document.getElementById('enterFullscreenBtn').classList.remove('d-none');
-//   document.getElementById('exitFullscreenBtn').classList.add('d-none');
-//   document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
-//   document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
-//   document.getElementById('canvas').classList.remove('canvasFullScreen');
-//   document.getElementById('title').classList.remove('d-none');
-//   document.getElementById('instruction').classList.remove('d-none');
-
+// function exitFullscreen() {
 //   if (document.exitFullscreen) {
 //     document.exitFullscreen();
 //   } else if (document.webkitExitFullscreen) {
@@ -161,80 +184,57 @@ window.addEventListener("keyup", (e) => {
 // }
 
 
-/**
- * Enters fullscreen mode for the given element.
- * @param {Element} element - The element to enter fullscreen mode for.
- */
-function enterFullscreen(element) {
-  if (element.requestFullscreen) {
-    element.requestFullscreen();
-  }
-}
+// /**
+//  * Toggles fullscreen mode for the document.
+//  */
+// function fullscreen() {
+//   let isInFullScreen =
+//     (document.fullscreenElement && document.fullscreenElement !== null) ||
+//     (document.webkitFullscreenElement &&
+//       document.webkitFullscreenElement !== null) ||
+//     (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+//     (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+//   let docElm = document.getElementById('canvas');
+//   if (!isInFullScreen) {
+//     openFullscreen(docElm);
+//   } else {
+//     closeFullscreen();
+//   }
+// }
 
 
-/**
- * Exits fullscreen mode.
- */
-function exitFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
-  }
-}
+// /**
+//  * Closes fullscreen mode.
+//  */
+// function closeFullscreen() {
+//   if (document.exitFullscreen) {
+//     document.exitFullscreen();
+//   } else if (document.webkitExitFullscreen) {
+//     document.webkitExitFullscreen();
+//   } else if (document.mozCancelFullScreen) {
+//     document.mozCancelFullScreen();
+//   } else if (document.msExitFullscreen) {
+//     document.msExitFullscreen();
+//   }
+// }
 
 
-/**
- * Toggles fullscreen mode for the document.
- */
-function fullscreen() {
-  let isInFullScreen =
-    (document.fullscreenElement && document.fullscreenElement !== null) ||
-    (document.webkitFullscreenElement &&
-      document.webkitFullscreenElement !== null) ||
-    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-    (document.msFullscreenElement && document.msFullscreenElement !== null);
-
-  let docElm = document.getElementById('canvas');
-  if (!isInFullScreen) {
-    openFullscreen(docElm);
-  } else {
-    closeFullscreen();
-  }
-}
-
-
-/**
- * Closes fullscreen mode.
- */
-function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
-  } else if (document.mozCancelFullScreen) {
-    document.mozCancelFullScreen();
-  } else if (document.msExitFullscreen) {
-    document.msExitFullscreen();
-  }
-}
-
-
-/**
- * Opens fullscreen mode for the given element.
- * @param {Element} docElm - The element to open fullscreen mode for.
- */
-function openFullscreen(docElm) {
-  if (docElm.requestFullscreen) {
-    docElm.requestFullscreen();
-  } else if (docElm.mozRequestFullScreen) {
-    docElm.mozRequestFullScreen();
-  } else if (docElm.webkitRequestFullScreen) {
-    docElm.webkitRequestFullScreen();
-  } else if (docElm.msRequestFullscreen) {
-    docElm.msRequestFullscreen();
-  }
-}
+// /**
+//  * Opens fullscreen mode for the given element.
+//  * @param {Element} docElm - The element to open fullscreen mode for.
+//  */
+// function openFullscreen(docElm) {
+//   if (docElm.requestFullscreen) {
+//     docElm.requestFullscreen();
+//   } else if (docElm.mozRequestFullScreen) {
+//     docElm.mozRequestFullScreen();
+//   } else if (docElm.webkitRequestFullScreen) {
+//     docElm.webkitRequestFullScreen();
+//   } else if (docElm.msRequestFullscreen) {
+//     docElm.msRequestFullscreen();
+//   }
+// }
 
 
 /**
