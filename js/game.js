@@ -23,6 +23,7 @@ function init() {
   document.getElementById('muteBgImg').src = './img/unmutedBg.png';
   canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard, stopGameVariable, gameOver);
+  gameOver = false;
 }
 
 
@@ -49,6 +50,7 @@ function setStoppableInterval(fn, time) {
  * Event handler to set the keyboard keys when they are pressed.
  */
 window.addEventListener("keydown", (e) => {
+  if (!gameOver) {
   if (e.keyCode == 39) {
     keyboard.RIGHT = true;
   }
@@ -75,7 +77,7 @@ window.addEventListener("keydown", (e) => {
 
   if (e.keyCode == 27) {
     keyboard.ESC = true;
-  }
+  }}
 });
 
 
@@ -83,6 +85,7 @@ window.addEventListener("keydown", (e) => {
  * Event handler to unset the keyboard keys when they are released.
  */
 window.addEventListener("keyup", (e) => {
+  if (!gameOver) {
   if (e.keyCode == 39) {
     keyboard.RIGHT = false;
   }
@@ -113,7 +116,7 @@ window.addEventListener("keyup", (e) => {
     if (document.exitFullscreen) {
       toSmall();
     }
-  }
+  }}
 });
 
 

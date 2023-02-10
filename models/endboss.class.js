@@ -95,6 +95,7 @@ class Endboss extends MovableObject{
     */
     checkIsDead() {
         if (this.energy <= 0) {
+            gameOver = true;
             this.speed = 0;
             this.playAnimation(this.IMAGES_DYING);
         if(!world.character.mute) {
