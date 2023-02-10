@@ -106,23 +106,9 @@ class Character extends MovableObject {
       this.animatedMovementControl();
     }, 1000 / 60);
 
-    setInterval(() => {
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        this.audio_snore.pause();
-      } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
-      } else if (this.isAboveGround()) {
-        this.playAnimation(this.IMAGES_JUMPING);
-      } else {
-        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-          this.playAnimation(this.IMAGES_WALKING);
-        }
-      }
+    setStoppableInterval(() => {
+      this.playCharacterAnimations();
     }, 100);
-
-    setStoppableInterval(() => this.moveCharacter(), 1000 / 60);
-    setStoppableInterval(() => this.playCharacterAnimations(), 60);
   }
 
   /**
@@ -147,16 +133,27 @@ class Character extends MovableObject {
   }
 
   /**
-  * Plays the appropriate animations for the character depending on their state (dead, hurt, jumping, or walking) 
+  * Plays the appropriate animations for the character depending on their state (idle, longidle, dead, hurt, jumping, or walking) 
   */
   playCharacterAnimations() {
-    if (this.idle) this.playAnimation(this.IMAGES_IDLE);
-    if (this.longIdle) this.playAnimation(this.IMAGES_LONGIDLE);
-    if (this.isDead()) this.playAnimation(this.IMAGES_DEAD), this.audio_lose.play();
-    else if (this.isHurt()) this.playAnimation(this.IMAGES_HURT);
-    else if (this.isAboveGround()) this.playAnimation(this.IMAGES_JUMPING);
-    else if (this.characterIsWalkingOnGround())
-      this.playAnimation(this.IMAGES_WALKING);
+    if (this.idle)
+      this.playAnimation(this.IMAGES_IDLE);
+    if (this.longIdle)
+      this.playAnimation(this.IMAGES_LONGIDLE);
+    if (this.isDead()) {
+      this.playAnimation(this.IMAGES_DEAD);
+      this.audio_snore.pause();
+      this.audio_lose.play();
+      this.audio_walking.volume = 0;
+    } else if (this.isHurt()) {
+      this.playAnimation(this.IMAGES_HURT);
+    } else if (this.isAboveGround()) {
+      this.playAnimation(this.IMAGES_JUMPING);
+    } else {
+      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+        this.playAnimation(this.IMAGES_WALKING);
+      }
+    }
   }
 
   /**
@@ -205,28 +202,6 @@ class Character extends MovableObject {
   }
 
   /**
-  * The `moveCharacter` function moves the character based on the active keys.
-  * If the right key is active, it moves the character to the right.
-  * If the left key is active, it moves the character to the left.
-  * If the space key is active, it makes the character jump.
-  * It also moves the camera.
-  */
-  moveCharacter() {
-    if (this.canMoveRight()) this.moveRight();
-    if (this.canMoveLeft()) this.moveLeft();
-    if (this.canJump()) this.jump();
-    this.moveCamera();
-  }
-
-  /**
-  * The `canMoveRight` function returns `true` if the right key on the keyboard is active and the character's x position is less than the level end x position.
-  * @returns {boolean}
-  */
-  canMoveRight() {
-    return this.world.keyboard.right && this.x < this.world.level.level_end_x;
-  }
-
-  /**
   * The `moveRight` function moves the character to the right, deactivates the idle mode, sets the `otherDirection` property to `false`, and updates the `lastInteraction` time.
   */
   moveRight() {
@@ -234,14 +209,6 @@ class Character extends MovableObject {
     this.deactivateIdleMode();
     this.otherDirection = false;
     this.lastInteraction = new Date().getTime();
-  }
-
-  /**
-  * The `canMoveLeft` function returns `true` if the left key on the keyboard is active and the character's x position is greater than 0.
-  * @returns {boolean}
-  */
-  canMoveLeft() {
-    return this.world.keyboard.left && this.x > 0;
   }
 
   /**
@@ -255,14 +222,6 @@ class Character extends MovableObject {
   }
 
   /**
-  * The `canJump` function returns `true` if the space key on the keyboard is active and the character is not above the ground.
-  * @returns {boolean}
-  */
-  canJump() {
-    return this.world.keyboard.space && !this.isAboveGround();
-  }
-
-  /**
   * Makes the character jump by setting its speed in the Y direction
   * The `jump` function makes the character jump, deactivates the idle mode, and updates the `lastInteraction` time.
   */
@@ -270,23 +229,5 @@ class Character extends MovableObject {
     this.speedY = 20;
     this.deactivateIdleMode();
     this.lastInteraction = new Date().getTime();
-  }
-
-  /**
-  * The `moveCamera` function sets the camera's x position to the character's x position minus 100.
-  * @returns {number}
-  */
-  moveCamera() {
-    return (this.world.camera_x = -this.x + 100);
-  }
-
-  /**
-  * The `characterIsWalkingOnGround` function returns `true` if either the right or left keys on the keyboard are active and the character is not above the ground.
-  */
-  characterIsWalkingOnGround() {
-    return (
-      this.world.keyboard.right ||
-      (this.world.keyboard.left && !this.isAboveGround())
-    );
   }
 }        
