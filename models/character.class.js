@@ -130,6 +130,11 @@ class Character extends MovableObject {
         this.jump();
         this.audio_jump.play();
       }
+      if (this.world.keyboard.D) {
+        this.deactivateIdleMode();
+        this.lastInteraction = new Date().getTime();
+        this.loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
+      }
       this.world.camera_x = -this.x + 100;
     }
   }
