@@ -145,6 +145,7 @@ class Character extends MovableObject {
       this.audio_snore.pause();
       this.audio_lose.play();
       this.audio_walking.volume = 0;
+      this.audio_jump.volume = 0;
     } else if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
     } else if (this.isAboveGround()) {
@@ -226,8 +227,10 @@ class Character extends MovableObject {
   * The `jump` function makes the character jump, deactivates the idle mode, and updates the `lastInteraction` time.
   */
   jump() {
-    this.speedY = 20;
-    this.deactivateIdleMode();
-    this.lastInteraction = new Date().getTime();
+    if (!this.isDead()) {
+      this.speedY = 20;
+      this.deactivateIdleMode();
+      this.lastInteraction = new Date().getTime();
+    }
   }
 }        
