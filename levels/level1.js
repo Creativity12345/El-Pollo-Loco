@@ -105,19 +105,14 @@ function createCoins() {
     return [
         new CollectableObject(400),
         new CollectableObject(400 + 50),
-        new CollectableObject(400 + 100),
         new CollectableObject(400 * 2),
         new CollectableObject(400 * 2 + 50),
-        new CollectableObject(400 * 2 + 100),
         new CollectableObject(400 * 3),
         new CollectableObject(400 * 3 + 50),
-        new CollectableObject(400 * 3 + 100),
         new CollectableObject(400 * 4),
         new CollectableObject(400 * 4 + 50),
-        new CollectableObject(400 * 4 + 100),
         new CollectableObject(400 * 5),
         new CollectableObject(400 * 5 + 50),
-        new CollectableObject(400 * 5 + 100),
     ];
 }
 
