@@ -9,7 +9,6 @@ class Endboss extends MovableObject{
     activated = false;
     x = 2500;
     energy = 100;
-    dead = false;
     speed = 7.5;
     otherDirection = false;
 
@@ -96,7 +95,6 @@ class Endboss extends MovableObject{
     */
     checkIsDead() {
         if (this.energy <= 0) {
-            this.dead = true;
             this.speed = 0;
             this.playAnimation(this.IMAGES_DYING);
         if(!world.character.mute) {

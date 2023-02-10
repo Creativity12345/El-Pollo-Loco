@@ -96,14 +96,14 @@ class MovableObject extends DrawableObject {
     * Move the object to the right by the object's speed.
     */
     moveRight() {
-            this.x += this.speed;
+        this.x += this.speed;
     }
 
     /**
     * Move the object to the left by the object's speed.
     */
     moveLeft() {
-            this.x -= this.speed;
+        this.x -= this.speed;
     }
 
     /**

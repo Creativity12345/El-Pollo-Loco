@@ -116,22 +116,23 @@ class Character extends MovableObject {
   */
   animatedMovementControl() {
     if (!this.isDead()) {
-    if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-      this.moveRight();
-      this.otherDirection = false;
-      this.audio_walking.play();
+      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+        this.moveRight();
+        this.otherDirection = false;
+        this.audio_walking.play();
+      }
+      if (this.world.keyboard.LEFT && this.x > 0) {
+        this.moveLeft();
+        this.otherDirection = true;
+        this.audio_walking.play();
+      }
+      if (this.world.keyboard.UP && !this.isAboveGround() || this.world.keyboard.SPACE && !this.isAboveGround()) {
+        this.jump();
+        this.audio_jump.play();
+      }
+      this.world.camera_x = -this.x + 100;
     }
-    if (this.world.keyboard.LEFT && this.x > 0) {
-      this.moveLeft();
-      this.otherDirection = true;
-      this.audio_walking.play();
-    }
-    if (this.world.keyboard.UP && !this.isAboveGround() || this.world.keyboard.SPACE && !this.isAboveGround()) {
-      this.jump();
-      this.audio_jump.play();
-    }
-    this.world.camera_x = -this.x + 100;
-  }}
+  }
 
   /**
   * Plays the appropriate animations for the character depending on their state (idle, longidle, dead, hurt, jumping, or walking) 
@@ -207,11 +208,13 @@ class Character extends MovableObject {
   * The `moveRight` function moves the character to the right, deactivates the idle mode, sets the `otherDirection` property to `false`, and updates the `lastInteraction` time.
   */
   moveRight() {
-    if (!this.isDead()) {
-      super.moveRight();
-      this.deactivateIdleMode();
-      this.otherDirection = false;
-      this.lastInteraction = new Date().getTime();
+    if (!this.dead) {
+      if (!this.isDead()) {
+        super.moveRight();
+        this.deactivateIdleMode();
+        this.otherDirection = false;
+        this.lastInteraction = new Date().getTime();
+      }
     }
   }
 
@@ -219,11 +222,13 @@ class Character extends MovableObject {
   * The `moveLeft` function moves the character to the left, deactivates the idle mode, sets the `otherDirection` property to `true`, and updates the `lastInteraction` time.
   */
   moveLeft() {
-    if (!this.isDead()) {
-      super.moveLeft();
-      this.deactivateIdleMode();
-      this.otherDirection = true;
-      this.lastInteraction = new Date().getTime();
+    if (!this.dead) {
+      if (!this.isDead()) {
+        super.moveLeft();
+        this.deactivateIdleMode();
+        this.otherDirection = true;
+        this.lastInteraction = new Date().getTime();
+      }
     }
   }
 
@@ -232,10 +237,12 @@ class Character extends MovableObject {
   * The `jump` function makes the character jump, deactivates the idle mode, and updates the `lastInteraction` time.
   */
   jump() {
-    if (!this.isDead()) {
-      this.speedY = 20;
-      this.deactivateIdleMode();
-      this.lastInteraction = new Date().getTime();
+    if (!this.dead) {
+      if (!this.isDead()) {
+        this.speedY = 20;
+        this.deactivateIdleMode();
+        this.lastInteraction = new Date().getTime();
+      }
     }
   }
 }        
