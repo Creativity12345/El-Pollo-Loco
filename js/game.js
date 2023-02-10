@@ -85,7 +85,6 @@ window.addEventListener("keydown", (e) => {
  * Event handler to unset the keyboard keys when they are released.
  */
 window.addEventListener("keyup", (e) => {
-  if (!gameOver) {
     if (e.keyCode == 39) {
       keyboard.RIGHT = false;
     }
@@ -109,15 +108,6 @@ window.addEventListener("keyup", (e) => {
     if (e.keyCode == 68) {
       keyboard.D = false;
     }
-
-    // if (e.keyCode == 27) {
-    //   keyboard.ESC = false;
-
-    // if (document.exitFullscreen) {
-    //   toSmall();
-    // }
-    // }
-  }
 });
 
 
@@ -278,6 +268,7 @@ function bgMusic() {
 
   world.character.audio_background.volume = muteStateBg ? 0 : 1;
   world.character.audio_lose.volume = muteStateBg ? 0 : 1;
+  world.endboss.audio_dying.volume = muteStateBg ? 0 : 1;
 }
 
 
