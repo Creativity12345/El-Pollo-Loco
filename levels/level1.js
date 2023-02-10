@@ -132,11 +132,7 @@ function createBottles() {
         new CollectableBottle(300),
         new CollectableBottle(650),
         new CollectableBottle(700),
-        new CollectableBottle(1050),
-        new CollectableBottle(1100),
-        new CollectableBottle(1450),
         new CollectableBottle(1500),
-        new CollectableBottle(1850),
-        new CollectableBottle(1900),
+        new CollectableBottle(1550),
     ];
 }
