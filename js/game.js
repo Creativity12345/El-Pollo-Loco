@@ -85,29 +85,29 @@ window.addEventListener("keydown", (e) => {
  * Event handler to unset the keyboard keys when they are released.
  */
 window.addEventListener("keyup", (e) => {
-    if (e.keyCode == 39) {
-      keyboard.RIGHT = false;
-    }
+  if (e.keyCode == 39) {
+    keyboard.RIGHT = false;
+  }
 
-    if (e.keyCode == 37) {
-      keyboard.LEFT = false;
-    }
+  if (e.keyCode == 37) {
+    keyboard.LEFT = false;
+  }
 
-    if (e.keyCode == 38) {
-      keyboard.UP = false;
-    }
+  if (e.keyCode == 38) {
+    keyboard.UP = false;
+  }
 
-    if (e.keyCode == 40) {
-      keyboard.DOWN = false;
-    }
+  if (e.keyCode == 40) {
+    keyboard.DOWN = false;
+  }
 
-    if (e.keyCode == 32) {
-      keyboard.SPACE = false;
-    }
+  if (e.keyCode == 32) {
+    keyboard.SPACE = false;
+  }
 
-    if (e.keyCode == 68) {
-      keyboard.D = false;
-    }
+  if (e.keyCode == 68) {
+    keyboard.D = false;
+  }
 });
 
 
@@ -161,12 +161,10 @@ window.addEventListener("keyup", (e) => {
 // }
 
 
-function toggleFullscreen() {
-  let fullscreen = document.getElementById('test');
-  enterFullscreen(fullscreen);
-}
-
-
+/**
+ * Enters fullscreen mode for the given element.
+ * @param {Element} element - The element to enter fullscreen mode for.
+ */
 function enterFullscreen(element) {
   if (element.requestFullscreen) {
     element.requestFullscreen();
@@ -174,7 +172,10 @@ function enterFullscreen(element) {
 }
 
 
-function exitFullscreen(element) {
+/**
+ * Exits fullscreen mode.
+ */
+function exitFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.webkitExitFullscreen) {
@@ -183,6 +184,9 @@ function exitFullscreen(element) {
 }
 
 
+/**
+ * Toggles fullscreen mode for the document.
+ */
 function fullscreen() {
   let isInFullScreen =
     (document.fullscreenElement && document.fullscreenElement !== null) ||
@@ -191,7 +195,7 @@ function fullscreen() {
     (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
     (document.msFullscreenElement && document.msFullscreenElement !== null);
 
-  let docElm = document.getElementById("showFullscreen");
+  let docElm = document.getElementById('canvas');
   if (!isInFullScreen) {
     openFullscreen(docElm);
   } else {
@@ -200,6 +204,9 @@ function fullscreen() {
 }
 
 
+/**
+ * Closes fullscreen mode.
+ */
 function closeFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -213,6 +220,10 @@ function closeFullscreen() {
 }
 
 
+/**
+ * Opens fullscreen mode for the given element.
+ * @param {Element} docElm - The element to open fullscreen mode for.
+ */
 function openFullscreen(docElm) {
   if (docElm.requestFullscreen) {
     docElm.requestFullscreen();
