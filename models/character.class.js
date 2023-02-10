@@ -206,20 +206,24 @@ class Character extends MovableObject {
   * The `moveRight` function moves the character to the right, deactivates the idle mode, sets the `otherDirection` property to `false`, and updates the `lastInteraction` time.
   */
   moveRight() {
-    super.moveRight();
-    this.deactivateIdleMode();
-    this.otherDirection = false;
-    this.lastInteraction = new Date().getTime();
+    if (!this.isDead()) {
+      super.moveRight();
+      this.deactivateIdleMode();
+      this.otherDirection = false;
+      this.lastInteraction = new Date().getTime();
+    }
   }
 
   /**
   * The `moveLeft` function moves the character to the left, deactivates the idle mode, sets the `otherDirection` property to `true`, and updates the `lastInteraction` time.
   */
   moveLeft() {
-    super.moveLeft();
-    this.deactivateIdleMode();
-    this.otherDirection = true;
-    this.lastInteraction = new Date().getTime();
+    if (!this.isDead()) {
+      super.moveLeft();
+      this.deactivateIdleMode();
+      this.otherDirection = true;
+      this.lastInteraction = new Date().getTime();
+    }
   }
 
   /**
