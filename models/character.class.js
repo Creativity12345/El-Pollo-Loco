@@ -115,6 +115,7 @@ class Character extends MovableObject {
   * Handles the animated movement control
   */
   animatedMovementControl() {
+    if (!this.isDead()) {
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
       this.moveRight();
       this.otherDirection = false;
@@ -130,7 +131,7 @@ class Character extends MovableObject {
       this.audio_jump.play();
     }
     this.world.camera_x = -this.x + 100;
-  }
+  }}
 
   /**
   * Plays the appropriate animations for the character depending on their state (idle, longidle, dead, hurt, jumping, or walking) 
