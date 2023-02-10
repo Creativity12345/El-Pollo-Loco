@@ -166,32 +166,17 @@ class Character extends MovableObject {
   */
   checkIdleMode() {
     setStoppableInterval(() => {
-      if (this.inactive()) {
-        let timepassed = new Date().getTime() - this.lastInteraction;
-        timepassed = timepassed / 1000;
-        if (timepassed > 3) {
+        if (new Date().getTime() - this.lastInteraction > 3000) {
           this.idle = true;
         }
-        if (timepassed > 6) {
+        if (new Date().getTime() - this.lastInteraction > 6000) {
           this.idle = false;
           this.longIdle = true;
           this.audio_snore.play();
           this.audio_background.pause();
         }
-      }
+      
     }, 1000);
-  }
-
-  /**
-  * The `inactive` function returns `true` if none of the right, left or space keys on the keyboard are active.
-  * @returns {boolean}
-  */
-  inactive() {
-    return (
-      !this.world.keyboard.right ||
-      !this.world.keyboard.left ||
-      !this.world.keyboard.space
-    );
   }
 
   /**
