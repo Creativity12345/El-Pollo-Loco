@@ -116,17 +116,19 @@ window.addEventListener("keyup", (e) => {
  */
 function fullscreen() {
   let isInFullScreen =
-      (document.fullscreenElement && document.fullscreenElement !== null) ||
-      (document.webkitFullscreenElement &&
-          document.webkitFullscreenElement !== null) ||
-      (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-      (document.msFullscreenElement && document.msFullscreenElement !== null);
+    (document.fullscreenElement && document.fullscreenElement !== null) ||
+    (document.webkitFullscreenElement &&
+      document.webkitFullscreenElement !== null) ||
+    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+    (document.msFullscreenElement && document.msFullscreenElement !== null);
 
   let docElm = document.getElementById('showFullscreen');
   if (!isInFullScreen) {
-      openFullscreen(docElm);
+    openFullscreen(docElm);
+    document.getElementById('content').style.width = '100%';
   } else {
-      closeFullscreen();
+    closeFullscreen();
+    document.getElementById('content').style.width = '720px';
   }
 }
 
@@ -137,13 +139,13 @@ function fullscreen() {
  */
 function openFullscreen(docElm) {
   if (docElm.requestFullscreen) {
-      docElm.requestFullscreen();
+    docElm.requestFullscreen();
   } else if (docElm.mozRequestFullScreen) {
-      docElm.mozRequestFullScreen();
+    docElm.mozRequestFullScreen();
   } else if (docElm.webkitRequestFullScreen) {
-      docElm.webkitRequestFullScreen();
+    docElm.webkitRequestFullScreen();
   } else if (docElm.msRequestFullscreen) {
-      docElm.msRequestFullscreen();
+    docElm.msRequestFullscreen();
   }
 }
 
@@ -153,11 +155,11 @@ function openFullscreen(docElm) {
  */
 function closeFullscreen() {
   if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
+    document.webkitExitFullscreen();
   } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
+    document.mozCancelFullScreen();
   } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
+    document.msExitFullscreen();
   }
 }
 
