@@ -172,11 +172,21 @@ function fullscreen() {
     (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
     (document.msFullscreenElement && document.msFullscreenElement !== null);
 
-  let docElm = document.getElementById('canvas');
+  let docElm = document.getElementById('content');
   if (!isInFullScreen) {
     openFullscreen(docElm);
+    document.getElementById('enterFullscreenBtn').classList.add('d-none');
+    document.getElementById('exitFullscreenBtn').classList.remove('d-none');
+    document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
+    document.getElementById('title').classList.add('d-none');
+    document.getElementById('instruction').classList.add('d-none');
   } else {
     closeFullscreen();
+    document.getElementById('enterFullscreenBtn').classList.remove('d-none');
+    document.getElementById('exitFullscreenBtn').classList.add('d-none');
+    document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
+    document.getElementById('title').classList.remove('d-none');
+    document.getElementById('instruction').classList.remove('d-none');
   }
 }
 
