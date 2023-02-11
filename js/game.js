@@ -122,7 +122,7 @@ function fullscreen() {
     (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
     (document.msFullscreenElement && document.msFullscreenElement !== null);
 
-  let docElm = document.getElementById('showFullscreen');
+  let docElm = document.getElementById('content');
   if (!isInFullScreen) {
     openFullscreen(docElm);
   } else {
