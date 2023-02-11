@@ -54,7 +54,7 @@ class World {
     }, 1000 / 60);
     setStoppableInterval(() => {
       this.checkEndbossKilled();
-    }, 600);
+    }, 200);
     setStoppableInterval(() => {
       this.checkSomeActivitiesOfGame();
     }, 50);
