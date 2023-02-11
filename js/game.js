@@ -111,56 +111,6 @@ window.addEventListener("keyup", (e) => {
 });
 
 
-// /**
-//  * Enters the fullscreen mode.
-//  * Adds 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class to respective elements and removes 'd-none' class from 'exitFullscreenBtn' element and adds to 'enterFullscreenBtn' and 'title' and 'instruction' elements.
-//  * If element supports requestFullscreen, fullscreen is requested.
-//  * Also supports msRequestFullscreen (for IE11) and webkitRequestFullscreen (for iOS Safari).
-//  */
-// function enterFullscreen() {
-//   document.getElementById('enterFullscreenBtn').classList.add('d-none');
-//   document.getElementById('exitFullscreenBtn').classList.remove('d-none');
-//   document.getElementById('startScreenImg').classList.add('startScreenImgFullscreen');
-//   document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
-//   document.getElementById('canvas').classList.add('canvasFullScreen');
-//   document.getElementById('title').classList.add('d-none');
-//   document.getElementById('instruction').classList.add('d-none');
-
-//   let element = document.getElementById('content');
-
-//   if (element.requestFullscreen) {
-//     element.requestFullscreen();
-//   } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
-//     element.msRequestFullscreen();
-//   } else if (element.webkitRequestFullscreen) {  // iOS Safari
-//     element.webkitRequestFullscreen();
-//   }
-// }
-
-
-// /**
-//  * Exits the fullscreen mode.
-//  * Removes 'startScreenImgFullscreen', 'endScreenImgFullscreen', 'canvasFullScreen' class from respective elements and adds 'd-none' class to 'enterFullscreenBtn' element and removes from 'exitFullscreenBtn' and 'title' and 'instruction' elements.
-//  * If document supports exitFullscreen, it is executed.
-//  * Also supports webkitExitFullscreen.
-//  */
-// function closeFullscreen() {
-//   document.getElementById('enterFullscreenBtn').classList.remove('d-none');
-//   document.getElementById('exitFullscreenBtn').classList.add('d-none');
-//   document.getElementById('startScreenImg').classList.remove('startScreenImgFullscreen');
-//   document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
-//   document.getElementById('canvas').classList.remove('canvasFullScreen');
-//   document.getElementById('title').classList.remove('d-none');
-//   document.getElementById('instruction').classList.remove('d-none');
-
-//   if (document.exitFullscreen) {
-//     document.exitFullscreen();
-//   } else if (document.webkitExitFullscreen) {
-//     document.webkitExitFullscreen();
-//   }
-// }
-
-
 /**
  * Toggles fullscreen mode for the document.
  */
@@ -175,32 +125,8 @@ function fullscreen() {
   let docElm = document.getElementById('content');
   if (!isInFullScreen) {
     openFullscreen(docElm);
-    document.getElementById('enterFullscreenBtn').classList.add('d-none');
-    document.getElementById('exitFullscreenBtn').classList.remove('d-none');
-    document.getElementById('endScreenImg').classList.add('endScreenImgFullscreen');
-    document.getElementById('title').classList.add('d-none');
-    document.getElementById('instruction').classList.add('d-none');
   } else {
     closeFullscreen();
-    document.getElementById('enterFullscreenBtn').classList.remove('d-none');
-    document.getElementById('exitFullscreenBtn').classList.add('d-none');
-    document.getElementById('endScreenImg').classList.remove('endScreenImgFullscreen');
-    document.getElementById('title').classList.remove('d-none');
-    document.getElementById('instruction').classList.remove('d-none');
-  }
-}
-
-
-/**
- * Closes fullscreen mode.
- */
-function closeFullscreen() {
-  if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
-  } else if (document.mozCancelFullScreen) {
-    document.mozCancelFullScreen();
-  } else if (document.msExitFullscreen) {
-    document.msExitFullscreen();
   }
 }
 
@@ -218,6 +144,20 @@ function openFullscreen(docElm) {
     docElm.webkitRequestFullScreen();
   } else if (docElm.msRequestFullscreen) {
     docElm.msRequestFullscreen();
+  }
+}
+
+
+/**
+ * Closes fullscreen mode.
+ */
+function closeFullscreen() {
+  if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
   }
 }
 
