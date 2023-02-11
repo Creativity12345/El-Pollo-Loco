@@ -125,10 +125,8 @@ function fullscreen() {
   let docElm = document.getElementById('showFullscreen');
   if (!isInFullScreen) {
     openFullscreen(docElm);
-    document.getElementById('content').style.width = '100%';
   } else {
     closeFullscreen();
-    document.getElementById('content').style.width = '720px';
   }
 }
 
